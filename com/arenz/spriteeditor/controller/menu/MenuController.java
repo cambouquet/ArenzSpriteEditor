@@ -21,6 +21,7 @@ public class MenuController {
 			String path = file.getCanonicalPath();
 			String title = file.getName();
 			Project newProject = new Project(title, path);
+			parentController.setProject(newProject);
 		} catch (IOException IOE) {
 			IOE.printStackTrace();
 			parentController.displayErrorMessage("IOException", "An IO exception was raised during creation of the new project.\nPlease try again.");

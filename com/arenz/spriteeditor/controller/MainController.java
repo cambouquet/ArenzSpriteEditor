@@ -1,6 +1,7 @@
 package com.arenz.spriteeditor.controller;
 
 import com.arenz.spriteeditor.controller.menu.MenuController;
+import com.arenz.spriteeditor.model.Project;
 import com.arenz.spriteeditor.ui.MainWindowView;
 import com.arenz.spriteeditor.ui.menu.MenuView;
 
@@ -9,6 +10,8 @@ public class MainController {
 	private MainWindowView mainView;
 	
 	private MenuController menuController;
+	
+	private Project project;
 	
 	public MainController() {
 		mainView = new MainWindowView(this, "Sprite Editor");
@@ -24,5 +27,9 @@ public class MainController {
 		menuController = new MenuController();
 		MenuView menuView = new MenuView(menuController);
 		mainView.setMenu(menuView);
+	}
+
+	public void setProject(Project newProject) {
+		this.project = newProject;
 	}
 }
