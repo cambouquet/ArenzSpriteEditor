@@ -6,12 +6,16 @@ package com.arenz.spriteeditor.ui.menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 
+import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import com.arenz.spriteeditor.controller.menu.NewProjectListener;
+import com.arenz.spriteeditor.controller.menu.MenuController;
+import com.arenz.spriteeditor.model.Project;
 import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 
 /**
@@ -19,6 +23,7 @@ import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
  *
  */
 public class MenuView {
+	private MenuController controller;
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu menuProject = new JMenu("Project");
 	private JMenuItem menuNew = new JMenuItem("New");
@@ -26,7 +31,8 @@ public class MenuView {
 	private JMenuItem menuLoad = new JMenuItem("Load");
 	private JMenuItem menuQuit = new JMenuItem("Quit");
 	
-	public MenuView() {
+	public MenuView(MenuController menuController) {
+		this.controller = menuController;
 		createsMenuItems();
 		createsMenu();
 	}
@@ -63,6 +69,20 @@ public class MenuView {
 
 	public JMenuBar getMenuBar() {
 		return this.menuBar;
+	}
+	
+	public class NewProjectListener implements ActionListener
+	{
+		private JFileChooser newFileChooser;
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{
+			newFileChooser = DialogHelper.createDefaultFileChooser();
+			if (newFileChooser.showDialog(null, "Create") == JFileChooser.APPROVE_OPTION) {
+				controller.createNewProject(newFileChooser.getSelectedFile());
+			}
+			
+		}
 	}
 	
 	public class SaveProjectListener implements ActionListener
