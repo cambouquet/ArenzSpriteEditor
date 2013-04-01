@@ -15,6 +15,10 @@ public class MainController {
 		
 		createsMenu();
 	}
+	
+	public void displayErrorMessage(String title, String text) {
+		mainView.displayErrorMessage(title, text);
+	}
 
 	private void createsMenu() {
 		menuController = new MenuController();

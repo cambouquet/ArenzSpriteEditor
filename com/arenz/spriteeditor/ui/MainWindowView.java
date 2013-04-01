@@ -6,7 +6,7 @@ package com.arenz.spriteeditor.ui;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 
 import com.arenz.spriteeditor.controller.MainController;
 import com.arenz.spriteeditor.ui.menu.MenuView;
@@ -32,5 +32,9 @@ public class MainWindowView {
 	
 	public void setMenu(MenuView menu) {
 		window.setJMenuBar(menu.getMenuBar());
+	}
+
+	public void displayErrorMessage(String title, String text) {
+		JOptionPane.showMessageDialog(window, text, title, JOptionPane.ERROR_MESSAGE);
 	}
 }

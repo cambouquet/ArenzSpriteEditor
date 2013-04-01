@@ -26,5 +26,4 @@ public class MenuController {
 			//TODO: call the main controller to display an error
 		}
 	}
-
 }
