@@ -7,11 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import com.arenz.spriteeditor.action.menu.NewProjectListener;
 import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 
 /**
@@ -65,24 +65,6 @@ public class MenuView {
 		return this.menuBar;
 	}
 	
-	public class NewProjectListener implements ActionListener
-	{
-		@Override
-		public void actionPerformed(ActionEvent arg0)
-		{
-			JFileChooser newFileChooser = DialogHelper.createDefaultFileChooser();
-			if (newFileChooser.showDialog(null, "Create") == JFileChooser.APPROVE_OPTION) {
-				createNewProject();
-			}
-			
-		}
-
-		private void createNewProject() {
-			// TODO Auto-generated method stub
-			
-		}
-	}
-
 	public class SaveProjectListener implements ActionListener
 	{
 		@Override
