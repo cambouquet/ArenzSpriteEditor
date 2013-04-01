@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.arenz.spriteeditor.action.menu;
+package com.arenz.spriteeditor.controller.menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

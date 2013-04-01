@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.arenz.spriteeditor.action;
+package com.arenz.spriteeditor.controller;
 
 
 /**
@@ -14,7 +14,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		LauncherAction launcher = new LauncherAction();
+		Launcher launcher = new Launcher();
 	}
 
 }

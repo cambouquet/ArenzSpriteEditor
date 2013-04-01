@@ -11,7 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import com.arenz.spriteeditor.action.menu.NewProjectListener;
+import com.arenz.spriteeditor.controller.menu.NewProjectListener;
 import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 
 /**
