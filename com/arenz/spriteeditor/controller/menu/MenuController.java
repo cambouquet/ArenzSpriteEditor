@@ -23,7 +23,7 @@ public class MenuController {
 			Project newProject = new Project(title, path);
 		} catch (IOException IOE) {
 			IOE.printStackTrace();
-			//TODO: call the main controller to display an error
+			parentController.displayErrorMessage("IOException", "An IO exception was raised during creation of the new project.\nPlease try again.");
 		}
 	}
 }
