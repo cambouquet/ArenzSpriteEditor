@@ -15,6 +15,10 @@ import com.arenz.spriteeditor.model.Project;
  */
 public class MenuController {
 	private MainController parentController;
+	
+	public MenuController(MainController mainController) {
+		this.parentController = mainController;
+	}
 
 	public void createNewProject(File file) {
 		try {

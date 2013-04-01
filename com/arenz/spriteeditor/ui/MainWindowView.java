@@ -37,4 +37,8 @@ public class MainWindowView {
 	public void displayErrorMessage(String title, String text) {
 		JOptionPane.showMessageDialog(window, text, title, JOptionPane.ERROR_MESSAGE);
 	}
+
+	public void updateTitle(String title) {
+		window.setTitle(title);
+	}
 }

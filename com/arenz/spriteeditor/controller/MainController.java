@@ -24,12 +24,13 @@ public class MainController {
 	}
 
 	private void createsMenu() {
-		menuController = new MenuController();
+		menuController = new MenuController(this);
 		MenuView menuView = new MenuView(menuController);
 		mainView.setMenu(menuView);
 	}
 
 	public void setProject(Project newProject) {
 		this.project = newProject;
+		mainView.updateTitle(project.getTitle());
 	}
 }
