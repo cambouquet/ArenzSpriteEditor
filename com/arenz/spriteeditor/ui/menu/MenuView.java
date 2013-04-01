@@ -3,6 +3,8 @@
  */
 package com.arenz.spriteeditor.ui.menu;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JMenu;
@@ -36,10 +38,19 @@ public class MenuView {
 	}
 
 	private void createsMenuItems() {
+		ActionListener quitActionListener = new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				System.exit(0);
+			}
+		};
+		MenuHelper.configureMenuElement(menuProject, KeyEvent.VK_P, null);
+		
 		MenuHelper.configureMenuElement(menuNew, KeyEvent.VK_N, null);
 		MenuHelper.configureMenuElement(menuSave, KeyEvent.VK_S, null);
 		MenuHelper.configureMenuElement(menuLoad, KeyEvent.VK_L, null);
-		MenuHelper.configureMenuElement(menuQuit, KeyEvent.VK_Q, null);
+		MenuHelper.configureMenuElement(menuQuit, KeyEvent.VK_Q, quitActionListener);
 		
 		MenuHelper.setAccelerator(menuNew, KeyEvent.VK_N,  KeyEvent.CTRL_MASK);
 		MenuHelper.setAccelerator(menuSave, KeyEvent.VK_S,  KeyEvent.CTRL_MASK);
