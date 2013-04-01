@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  * @author Camille
@@ -47,7 +48,7 @@ public class MenuView {
 		};
 		MenuHelper.configureMenuElement(menuProject, KeyEvent.VK_P, null);
 		
-		MenuHelper.configureMenuElement(menuNew, KeyEvent.VK_N, null);
+		MenuHelper.configureMenuElement(menuNew, KeyEvent.VK_N, new NewProjectListener());
 		MenuHelper.configureMenuElement(menuSave, KeyEvent.VK_S, null);
 		MenuHelper.configureMenuElement(menuLoad, KeyEvent.VK_L, null);
 		MenuHelper.configureMenuElement(menuQuit, KeyEvent.VK_Q, quitActionListener);
@@ -60,5 +61,18 @@ public class MenuView {
 
 	public JMenuBar getMenuBar() {
 		return this.menuBar;
+	}
+	
+	/**
+	 * Listener for new project menu item.
+	 */
+	public class NewProjectListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{
+			JOptionPane newDialog = new JOptionPane();
+			newDialog.showMessageDialog(null, "This feature has not been implemented yet", "Not implemented yet", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 }
