@@ -7,10 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
+
+import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 
 /**
  * @author Camille
@@ -49,8 +51,8 @@ public class MenuView {
 		MenuHelper.configureMenuElement(menuProject, KeyEvent.VK_P, null);
 		
 		MenuHelper.configureMenuElement(menuNew, KeyEvent.VK_N, new NewProjectListener());
-		MenuHelper.configureMenuElement(menuSave, KeyEvent.VK_S, null);
-		MenuHelper.configureMenuElement(menuLoad, KeyEvent.VK_L, null);
+		MenuHelper.configureMenuElement(menuSave, KeyEvent.VK_S, new SaveProjectListener());
+		MenuHelper.configureMenuElement(menuLoad, KeyEvent.VK_L, new LoadProjectListener());
 		MenuHelper.configureMenuElement(menuQuit, KeyEvent.VK_Q, quitActionListener);
 		
 		MenuHelper.setAccelerator(menuNew, KeyEvent.VK_N,  KeyEvent.CTRL_MASK);
@@ -63,16 +65,39 @@ public class MenuView {
 		return this.menuBar;
 	}
 	
-	/**
-	 * Listener for new project menu item.
-	 */
 	public class NewProjectListener implements ActionListener
 	{
 		@Override
 		public void actionPerformed(ActionEvent arg0)
 		{
-			JOptionPane newDialog = new JOptionPane();
-			newDialog.showMessageDialog(null, "This feature has not been implemented yet", "Not implemented yet", JOptionPane.INFORMATION_MESSAGE);
+			JFileChooser newFileChooser = DialogHelper.createDefaultFileChooser();
+			if (newFileChooser.showDialog(null, "Create") == JFileChooser.APPROVE_OPTION) {
+				createNewProject();
+			}
+			
+		}
+
+		private void createNewProject() {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+
+	public class SaveProjectListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{
+			DialogHelper.displayNotImplementedDialog();
+		}
+	}
+
+	public class LoadProjectListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{
+			DialogHelper.displayNotImplementedDialog();
 		}
 	}
 }
