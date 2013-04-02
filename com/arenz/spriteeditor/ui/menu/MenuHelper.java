@@ -8,14 +8,10 @@ import javax.swing.KeyStroke;
 
 /**
  * @author Camille
- *
+ * 
  */
 public abstract class MenuHelper {
-	public static void configureMenuElement(AbstractButton menuElement, int mnemonic, ActionListener actionListener) {
-		menuElement.setMnemonic(mnemonic);
-		menuElement.addActionListener(actionListener);
-	}
-	
+
 	public static void setAccelerator(JMenuItem menuItem, int keyCode, int keyModifier) {
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyCode, keyModifier));
 	}

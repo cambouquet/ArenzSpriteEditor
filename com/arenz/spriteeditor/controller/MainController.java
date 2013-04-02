@@ -24,8 +24,8 @@ public class MainController {
 	}
 
 	private void createsMenu() {
-		menuController = new MenuController(this);
-		MenuView menuView = new MenuView(menuController);
+		MenuView menuView = new MenuView();
+		menuController = new MenuController(this, menuView);
 		mainView.setMenu(menuView);
 	}
 

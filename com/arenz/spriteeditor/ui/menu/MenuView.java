@@ -23,7 +23,6 @@ import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
  *
  */
 public class MenuView {
-	private MenuController controller;
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu menuProject = new JMenu("Project");
 	private JMenuItem menuNew = new JMenuItem("New");
@@ -31,8 +30,7 @@ public class MenuView {
 	private JMenuItem menuLoad = new JMenuItem("Load");
 	private JMenuItem menuQuit = new JMenuItem("Quit");
 	
-	public MenuView(MenuController menuController) {
-		this.controller = menuController;
+	public MenuView() {
 		createsMenuItems();
 		createsMenu();
 	}
@@ -47,19 +45,12 @@ public class MenuView {
 	}
 
 	private void createsMenuItems() {
-		ActionListener quitActionListener = new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				System.exit(0);
-			}
-		};
-		MenuHelper.configureMenuElement(menuProject, KeyEvent.VK_P, null);
+		menuProject.setMnemonic(KeyEvent.VK_P);
 		
-		MenuHelper.configureMenuElement(menuNew, KeyEvent.VK_N, new NewProjectListener());
-		MenuHelper.configureMenuElement(menuSave, KeyEvent.VK_S, new SaveProjectListener());
-		MenuHelper.configureMenuElement(menuLoad, KeyEvent.VK_L, new LoadProjectListener());
-		MenuHelper.configureMenuElement(menuQuit, KeyEvent.VK_Q, quitActionListener);
+		menuNew.setMnemonic(KeyEvent.VK_N);
+		menuSave.setMnemonic(KeyEvent.VK_S);
+		menuLoad.setMnemonic(KeyEvent.VK_L);
+		menuQuit.setMnemonic(KeyEvent.VK_Q);
 		
 		MenuHelper.setAccelerator(menuNew, KeyEvent.VK_N,  KeyEvent.CTRL_MASK);
 		MenuHelper.setAccelerator(menuSave, KeyEvent.VK_S,  KeyEvent.CTRL_MASK);
@@ -71,35 +62,19 @@ public class MenuView {
 		return this.menuBar;
 	}
 	
-	public class NewProjectListener implements ActionListener
-	{
-		private JFileChooser newFileChooser;
-		@Override
-		public void actionPerformed(ActionEvent arg0)
-		{
-			newFileChooser = DialogHelper.createDefaultFileChooser();
-			if (newFileChooser.showDialog(null, "Create") == JFileChooser.APPROVE_OPTION) {
-				controller.createNewProject(newFileChooser.getSelectedFile());
-			}
-			
-		}
+	public void addNewProjectListener(ActionListener newProjectListener) {
+		menuNew.addActionListener(newProjectListener);
 	}
 	
-	public class SaveProjectListener implements ActionListener
-	{
-		@Override
-		public void actionPerformed(ActionEvent arg0)
-		{
-			DialogHelper.displayNotImplementedDialog();
-		}
+	public void addSaveProjectListener(ActionListener saveProjectListener) {
+		menuSave.addActionListener(saveProjectListener);
 	}
-
-	public class LoadProjectListener implements ActionListener
-	{
-		@Override
-		public void actionPerformed(ActionEvent arg0)
-		{
-			DialogHelper.displayNotImplementedDialog();
-		}
+	
+	public void addLoadProjectListener(ActionListener loadProjectListener) {
+		menuLoad.addActionListener(loadProjectListener);
+	}
+	
+	public void addQuitProjectListener(ActionListener quitProjectListener) {
+		menuQuit.addActionListener(quitProjectListener);
 	}
 }
