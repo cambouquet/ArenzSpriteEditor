@@ -18,7 +18,7 @@ public abstract class DialogHelper {
 		JOptionPane.showMessageDialog(null, "This feature has not been implemented yet", "Not implemented yet", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	public static JFileChooser createDefaultFileChooser() {
+	public static JFileChooser createHomeFileChooser() {
 		FileSystemView systemView = FileSystemView.getFileSystemView();
 		File homeFile = systemView.getHomeDirectory();
 		

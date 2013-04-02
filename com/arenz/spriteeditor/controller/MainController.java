@@ -1,5 +1,7 @@
 package com.arenz.spriteeditor.controller;
 
+import javax.swing.JFrame;
+
 import com.arenz.spriteeditor.controller.menu.MenuController;
 import com.arenz.spriteeditor.model.Project;
 import com.arenz.spriteeditor.ui.MainWindowView;
