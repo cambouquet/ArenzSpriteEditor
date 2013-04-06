@@ -11,6 +11,8 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.arenz.spriteeditor.ui.dialogs.elements.LabelTextField;
+
 /**
  * @author Camille
  *
@@ -21,8 +23,8 @@ public class NewProjectDialog extends JDialog {
 	private JPanel buttonsPanel = new JPanel();
 	private JPanel elementsPanel = new JPanel();
 	
-	private JTextField nameTextField = new JTextField(20);
-	private JTextField pathTextField = new JTextField(50);
+	private LabelTextField nameTextField;
+	private LabelTextField pathTextField;
 	private JButton browseButton;
 	
 	private JButton okButton;
@@ -44,6 +46,8 @@ public class NewProjectDialog extends JDialog {
 	}
 
 	private void initElements() {
+		nameTextField = new LabelTextField("Name", 20);
+		pathTextField = new LabelTextField("Path", 50);
 		browseButton = new JButton("Browse");
 	}
 
