@@ -50,15 +50,6 @@ public class MenuController extends AbstractController {
 			NewProjectDialog newProjectDialog = new NewProjectDialog();
 			NewProjectController newProjectController = new NewProjectController(MenuController.this, newProjectDialog);
 			newProjectController.displayView();
-			/*
-			JFileChooser newFileChooser = DialogHelper
-					.createHomeFileChooser();
-			newFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-			
-			if (newFileChooser.showDialog(null, "Create") == JFileChooser.APPROVE_OPTION) {
-				createNewProject(newFileChooser.getSelectedFile());
-			}
-			*/
 		}
 	}
 

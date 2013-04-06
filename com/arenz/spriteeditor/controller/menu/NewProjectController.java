@@ -3,6 +3,7 @@
  */
 package com.arenz.spriteeditor.controller.menu;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -64,14 +65,14 @@ public class NewProjectController extends AbstractController {
 		}
 		
 		private boolean areDataValid(String projectRootFolder) {
-			boolean areValid = false;
+			boolean areValid = true;
 			
-			if (!projectName.isEmpty() && !projectRootFolder.isEmpty()) {
+			if (projectName.isEmpty() || projectRootFolder.isEmpty()) {
 				areValid = false;
 			}
 			
 			rootFolder = new File(projectRootFolder);
-			if (rootFolder.exists() && rootFolder.isDirectory()) {
+			if (!rootFolder.exists() || !rootFolder.isDirectory()) {
 				areValid = false;
 			}
 			
@@ -97,7 +98,7 @@ public class NewProjectController extends AbstractController {
 			JFileChooser rootChooser = DialogHelper.createHomeFileChooser();
 			rootChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			
-			if (rootChooser.showDialog(null, "Create") == JFileChooser.APPROVE_OPTION) {
+			if (rootChooser.showDialog(getWindow().getViewWindow(), "Select") == JFileChooser.APPROVE_OPTION) {
 				try {
 					File rootFolder = rootChooser.getSelectedFile();
 					view.fillRootPath(rootFolder.getCanonicalPath());

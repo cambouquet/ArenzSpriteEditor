@@ -97,7 +97,7 @@ public class NewProjectDialog extends JDialog implements Viewable {
 	}
 
 	@Override
-	public Component getWindow() {
+	public Component getViewWindow() {
 		return this;
 	}
 

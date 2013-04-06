@@ -38,7 +38,7 @@ public class MainWindowView implements Viewable {
 		window.setTitle(title);
 	}
 
-	public Frame getWindow() {
+	public Frame getViewWindow() {
 		return window;
 	}
 }
