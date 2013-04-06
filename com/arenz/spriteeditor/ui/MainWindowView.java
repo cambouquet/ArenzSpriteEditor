@@ -4,9 +4,9 @@
 package com.arenz.spriteeditor.ui;
 
 import java.awt.Dimension;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import com.arenz.spriteeditor.controller.MainController;
 import com.arenz.spriteeditor.ui.menu.MenuView;
@@ -34,11 +34,11 @@ public class MainWindowView {
 		window.setJMenuBar(menu.getMenuBar());
 	}
 
-	public void displayErrorMessage(String title, String text) {
-		JOptionPane.showMessageDialog(window, text, title, JOptionPane.ERROR_MESSAGE);
-	}
-
 	public void updateTitle(String title) {
 		window.setTitle(title);
+	}
+
+	public Frame getWindow() {
+		return window;
 	}
 }

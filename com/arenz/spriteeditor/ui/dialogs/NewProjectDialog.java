@@ -19,13 +19,11 @@ import com.arenz.spriteeditor.ui.dialogs.elements.LabelTextField;
  *
  */
 public class NewProjectDialog extends JDialog {
-	private boolean isValidated = false;
-	
 	private JPanel buttonsPanel = new JPanel();
 	private JPanel elementsPanel = new JPanel();
 	
 	private LabelTextField nameTextField;
-	private LabelTextField pathTextField;
+	private LabelTextField rootFolderTextField;
 	private JButton browseButton;
 	
 	private JButton okButton;
@@ -56,13 +54,13 @@ public class NewProjectDialog extends JDialog {
 
 	private void initElements() {
 		nameTextField = new LabelTextField("Name", 20);
-		pathTextField = new LabelTextField("Path", 50);
+		rootFolderTextField = new LabelTextField("Path", 50);
 		browseButton = new JButton("Browse");
 	}
 
 	private void addElements() {
 		elementsPanel.add(nameTextField, LayoutHelper.getGridBagConstraints(0, 0, 2, 1));
-		elementsPanel.add(pathTextField, LayoutHelper.getGridBagConstraints(0, 1, 1, 1));
+		elementsPanel.add(rootFolderTextField, LayoutHelper.getGridBagConstraints(0, 1, 1, 1));
 		elementsPanel.add(browseButton, LayoutHelper.getGridBagConstraints(1, 1, 1, 1));
 	}
 
@@ -82,5 +80,17 @@ public class NewProjectDialog extends JDialog {
 
 	public void addCancelButtonListener(ActionListener cancelListener) {
 		cancelButton.addActionListener(cancelListener);
+	}
+	
+	public void addBrowseButtonListener(ActionListener browseListener) {
+		browseButton.addActionListener(browseListener);
+	}
+
+	public String getProjectName() {
+		return this.nameTextField.getText();
+	}
+
+	public String getProjectRootFolder() {
+		return this.rootFolderTextField.getText();
 	}
 }

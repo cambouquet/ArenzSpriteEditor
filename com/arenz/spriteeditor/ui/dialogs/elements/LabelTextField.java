@@ -20,4 +20,8 @@ public class LabelTextField extends JPanel {
 		this.add(this.label);
 		this.add(this.textField);
 	}
+
+	public String getText() {
+		return textField.getText();
+	}
 }

@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import com.arenz.spriteeditor.controller.menu.MenuController;
 import com.arenz.spriteeditor.model.Project;
 import com.arenz.spriteeditor.ui.MainWindowView;
+import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 import com.arenz.spriteeditor.ui.menu.MenuView;
 
 public class MainController {
@@ -21,8 +22,8 @@ public class MainController {
 		createsMenu();
 	}
 	
-	public void displayErrorMessage(String title, String text) {
-		mainView.displayErrorMessage(title, text);
+	public void displayErrorMessage(String title, String message) {
+		DialogHelper.displayErrorMessage(mainView.getWindow(), title, message);
 	}
 
 	private void createsMenu() {

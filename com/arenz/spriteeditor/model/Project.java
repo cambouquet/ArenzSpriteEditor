@@ -3,24 +3,26 @@
  */
 package com.arenz.spriteeditor.model;
 
+import java.io.File;
+
 /**
  * @author Camille
  *
  */
 public class Project {
 	private String title;
-	private String path;
+	private File rootFolder;
 	
-	public Project(String title, String path) {
+	public Project(String title, File rootFolder) {
 		this.title = title;
-		this.path = path;
+		this.rootFolder = rootFolder;
 	}
 	
 	public String getTitle() {
 		return this.title;
 	}
 	
-	public String getPath() {
-		return this.path;
+	public File getRootFolder() {
+		return this.rootFolder;
 	}
 }

@@ -60,22 +60,6 @@ public class MenuController {
 			}
 			*/
 		}
-
-		void createNewProject(File file) {
-			try {
-				String path = file.getCanonicalPath();
-				String title = file.getName();
-				
-				Project newProject = new Project(title, path);
-				parentController.setProject(newProject);
-			} catch (IOException IOE) {
-				IOE.printStackTrace();
-				parentController
-				.displayErrorMessage(
-						"IOException",
-						"An IO exception was raised during creation of the new project.\nPlease try again.");
-			}
-		}
 	}
 
 	public class SaveProjectListener implements ActionListener {
@@ -90,5 +74,9 @@ public class MenuController {
 		public void actionPerformed(ActionEvent arg0) {
 			DialogHelper.displayNotImplementedDialog();
 		}
+	}
+
+	public void setProject(Project project) {
+		parentController.setProject(project);
 	}
 }
