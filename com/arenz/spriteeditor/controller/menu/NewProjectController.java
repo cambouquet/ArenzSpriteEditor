@@ -103,7 +103,7 @@ public class NewProjectController extends AbstractController {
 	}
 
 	@Override
-	public Viewable getView() {
+	public Viewable getWindow() {
 		return view;
 	}
 }

@@ -5,7 +5,7 @@ import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 
 public abstract class AbstractController {
 	protected void displayErrorMessage(String title, String text) {
-		DialogHelper.displayErrorMessage(getView().getWindow(), title, text);
+		DialogHelper.displayErrorMessage(getWindow().getWindow(), title, text);
 	}
 
 	protected void transferErrorMessage(String title, String text) {
@@ -13,5 +13,5 @@ public abstract class AbstractController {
 	}
 	
 	public abstract AbstractController getParentController();
-	public abstract Viewable getView();	
+	public abstract Viewable getWindow();	
 }

@@ -86,7 +86,7 @@ public class MenuController extends AbstractController {
 	}
 
 	@Override
-	public Viewable getView() {
-		return parentController.getView();
+	public Viewable getWindow() {
+		return parentController.getWindow();
 	}
 }
