@@ -8,11 +8,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-import javax.swing.JFileChooser;
-
 import com.arenz.spriteeditor.controller.MainController;
 import com.arenz.spriteeditor.model.Project;
 import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
+import com.arenz.spriteeditor.ui.dialogs.NewProjectDialog;
 import com.arenz.spriteeditor.ui.menu.MenuView;
 
 /**
@@ -48,6 +47,10 @@ public class MenuController {
 	public class NewProjectListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			NewProjectDialog newProjectDialog = new NewProjectDialog();
+			
+			newProjectDialog.setVisible();
+			/*
 			JFileChooser newFileChooser = DialogHelper
 					.createHomeFileChooser();
 			newFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -55,7 +58,7 @@ public class MenuController {
 			if (newFileChooser.showDialog(null, "Create") == JFileChooser.APPROVE_OPTION) {
 				createNewProject(newFileChooser.getSelectedFile());
 			}
-
+			*/
 		}
 
 		void createNewProject(File file) {
