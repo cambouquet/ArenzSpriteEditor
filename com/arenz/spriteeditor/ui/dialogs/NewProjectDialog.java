@@ -11,6 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.arenz.spriteeditor.ui.LayoutHelper;
 import com.arenz.spriteeditor.ui.dialogs.elements.LabelTextField;
 
 /**
@@ -45,12 +46,6 @@ public class NewProjectDialog extends JDialog {
 		addButtons();
 	}
 
-	private void initElements() {
-		nameTextField = new LabelTextField("Name", 20);
-		pathTextField = new LabelTextField("Path", 50);
-		browseButton = new JButton("Browse");
-	}
-
 	private void initPanels() {
 		elementsPanel.setLayout(new GridBagLayout());
 		buttonsPanel.setLayout(new GridBagLayout());
@@ -59,10 +54,16 @@ public class NewProjectDialog extends JDialog {
 		this.add(buttonsPanel, BorderLayout.SOUTH);
 	}
 
+	private void initElements() {
+		nameTextField = new LabelTextField("Name", 20);
+		pathTextField = new LabelTextField("Path", 50);
+		browseButton = new JButton("Browse");
+	}
+
 	private void addElements() {
-		elementsPanel.add(nameTextField);
-		elementsPanel.add(pathTextField);
-		elementsPanel.add(browseButton);
+		elementsPanel.add(nameTextField, LayoutHelper.getGridBagConstraints(0, 0, 2, 1));
+		elementsPanel.add(pathTextField, LayoutHelper.getGridBagConstraints(0, 1, 1, 1));
+		elementsPanel.add(browseButton, LayoutHelper.getGridBagConstraints(1, 1, 1, 1));
 	}
 
 	private void addButtons() {
