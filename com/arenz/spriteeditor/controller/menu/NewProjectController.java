@@ -7,7 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import com.arenz.spriteeditor.controller.AbstractController;
 import com.arenz.spriteeditor.model.Project;
+import com.arenz.spriteeditor.ui.Viewable;
 import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 import com.arenz.spriteeditor.ui.dialogs.NewProjectDialog;
 
@@ -15,7 +17,7 @@ import com.arenz.spriteeditor.ui.dialogs.NewProjectDialog;
  * @author Camille
  *
  */
-public class NewProjectController {
+public class NewProjectController extends AbstractController {
 	private NewProjectDialog view;
 	private MenuController parentController;
 	
@@ -93,5 +95,15 @@ public class NewProjectController {
 	public void displayView() {
 		view.pack();
 		view.setVisible(true);
+	}
+
+	@Override
+	public AbstractController getParentController() {
+		return parentController;
+	}
+
+	@Override
+	public Viewable getView() {
+		return view;
 	}
 }

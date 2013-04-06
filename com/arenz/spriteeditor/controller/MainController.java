@@ -5,10 +5,11 @@ import javax.swing.JFrame;
 import com.arenz.spriteeditor.controller.menu.MenuController;
 import com.arenz.spriteeditor.model.Project;
 import com.arenz.spriteeditor.ui.MainWindowView;
+import com.arenz.spriteeditor.ui.Viewable;
 import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 import com.arenz.spriteeditor.ui.menu.MenuView;
 
-public class MainController {
+public class MainController extends AbstractController {
 
 	private MainWindowView mainView;
 	
@@ -22,10 +23,6 @@ public class MainController {
 		createsMenu();
 	}
 	
-	public void displayErrorMessage(String title, String message) {
-		DialogHelper.displayErrorMessage(mainView.getWindow(), title, message);
-	}
-
 	private void createsMenu() {
 		MenuView menuView = new MenuView();
 		menuController = new MenuController(this, menuView);
@@ -35,5 +32,16 @@ public class MainController {
 	public void setProject(Project newProject) {
 		this.project = newProject;
 		mainView.updateTitle(project.getTitle());
+	}
+
+	@Override
+	public AbstractController getParentController() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Viewable getView() {
+		return mainView;
 	}
 }

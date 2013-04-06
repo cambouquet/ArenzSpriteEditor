@@ -4,6 +4,7 @@
 package com.arenz.spriteeditor.ui.dialogs;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 
@@ -12,13 +13,14 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 
 import com.arenz.spriteeditor.ui.LayoutHelper;
+import com.arenz.spriteeditor.ui.Viewable;
 import com.arenz.spriteeditor.ui.dialogs.elements.LabelTextField;
 
 /**
  * @author Camille
  *
  */
-public class NewProjectDialog extends JDialog {
+public class NewProjectDialog extends JDialog implements Viewable {
 	private JPanel buttonsPanel = new JPanel();
 	private JPanel elementsPanel = new JPanel();
 	
@@ -92,5 +94,10 @@ public class NewProjectDialog extends JDialog {
 
 	public String getProjectRootFolder() {
 		return this.rootFolderTextField.getText();
+	}
+
+	@Override
+	public Component getWindow() {
+		return this;
 	}
 }

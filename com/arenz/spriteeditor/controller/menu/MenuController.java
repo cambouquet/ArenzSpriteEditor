@@ -5,11 +5,11 @@ package com.arenz.spriteeditor.controller.menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
+import com.arenz.spriteeditor.controller.AbstractController;
 import com.arenz.spriteeditor.controller.MainController;
 import com.arenz.spriteeditor.model.Project;
+import com.arenz.spriteeditor.ui.Viewable;
 import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 import com.arenz.spriteeditor.ui.dialogs.NewProjectDialog;
 import com.arenz.spriteeditor.ui.menu.MenuView;
@@ -18,7 +18,7 @@ import com.arenz.spriteeditor.ui.menu.MenuView;
  * @author Camille
  * 
  */
-public class MenuController {
+public class MenuController extends AbstractController {
 	private MainController parentController;
 	private MenuView menuView;
 
@@ -78,5 +78,15 @@ public class MenuController {
 
 	public void setProject(Project project) {
 		parentController.setProject(project);
+	}
+
+	@Override
+	public AbstractController getParentController() {
+		return parentController;
+	}
+
+	@Override
+	public Viewable getView() {
+		return parentController.getView();
 	}
 }

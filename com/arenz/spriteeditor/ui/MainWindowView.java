@@ -15,7 +15,7 @@ import com.arenz.spriteeditor.ui.menu.MenuView;
  * @author Camille
  *
  */
-public class MainWindowView {
+public class MainWindowView implements Viewable {
 	
 	private JFrame window = new JFrame();
 	private MenuView menu;
