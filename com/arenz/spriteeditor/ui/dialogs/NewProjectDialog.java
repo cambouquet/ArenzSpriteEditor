@@ -5,11 +5,11 @@ package com.arenz.spriteeditor.ui.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import com.arenz.spriteeditor.ui.LayoutHelper;
 import com.arenz.spriteeditor.ui.dialogs.elements.LabelTextField;
@@ -80,5 +80,13 @@ public class NewProjectDialog extends JDialog {
 		this.pack();
 		this.setVisible(true);
 		return isValidated;
+	}
+	
+	public void addOkButtonListener(ActionListener okListener) {
+		okButton.addActionListener(okListener);
+	}
+
+	public void addCancelButtonListener(ActionListener cancelListener) {
+		cancelButton.addActionListener(cancelListener);
 	}
 }
