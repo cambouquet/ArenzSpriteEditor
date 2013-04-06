@@ -48,6 +48,7 @@ public class MenuController {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			NewProjectDialog newProjectDialog = new NewProjectDialog();
+			NewProjectController newProjectController = new NewProjectController(MenuController.this, newProjectDialog);
 			
 			newProjectDialog.setVisible();
 			/*
