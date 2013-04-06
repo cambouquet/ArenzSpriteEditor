@@ -49,8 +49,7 @@ public class MenuController {
 		public void actionPerformed(ActionEvent arg0) {
 			NewProjectDialog newProjectDialog = new NewProjectDialog();
 			NewProjectController newProjectController = new NewProjectController(MenuController.this, newProjectDialog);
-			
-			newProjectDialog.setVisible();
+			newProjectController.displayView();
 			/*
 			JFileChooser newFileChooser = DialogHelper
 					.createHomeFileChooser();

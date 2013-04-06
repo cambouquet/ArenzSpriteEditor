@@ -29,17 +29,22 @@ public class NewProjectController {
 		view.addCancelButtonListener(new CancelButtonListener());
 	}
 
-	public class OkButtonListener implements ActionListener {
+	private class OkButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			DialogHelper.displayNotImplementedDialog();
 		}
 	}
 	
-	public class CancelButtonListener implements ActionListener {
+	private class CancelButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			DialogHelper.displayNotImplementedDialog();
+			view.setVisible(false);
 		}
+	}
+	
+	public void displayView() {
+		view.pack();
+		view.setVisible(true);
 	}
 }

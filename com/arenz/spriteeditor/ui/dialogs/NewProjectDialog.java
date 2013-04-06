@@ -75,12 +75,6 @@ public class NewProjectDialog extends JDialog {
 		okButton = new JButton("Ok");
 		cancelButton = new JButton("Cancel");
 	}
-
-	public boolean setVisible() {
-		this.pack();
-		this.setVisible(true);
-		return isValidated;
-	}
 	
 	public void addOkButtonListener(ActionListener okListener) {
 		okButton.addActionListener(okListener);
