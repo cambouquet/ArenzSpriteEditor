@@ -100,4 +100,8 @@ public class NewProjectDialog extends JDialog implements Viewable {
 	public Component getWindow() {
 		return this;
 	}
+
+	public void fillRootPath(String canonicalPath) {
+		rootFolderTextField.setText(canonicalPath);
+	}
 }

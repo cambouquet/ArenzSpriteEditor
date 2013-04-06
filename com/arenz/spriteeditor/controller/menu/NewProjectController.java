@@ -6,6 +6,9 @@ package com.arenz.spriteeditor.controller.menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+
+import javax.swing.JFileChooser;
 
 import com.arenz.spriteeditor.controller.AbstractController;
 import com.arenz.spriteeditor.model.Project;
@@ -31,7 +34,7 @@ public class NewProjectController extends AbstractController {
 	private void addListeners() {
 		view.addOkButtonListener(new OkButtonListener());
 		view.addCancelButtonListener(new CancelButtonListener());
-		view.addBrowseButtonListener(new CancelButtonListener());
+		view.addBrowseButtonListener(new BrowseButtonListener());
 	}
 
 	public void displayErrorMessage(String title, String text) {
@@ -85,6 +88,24 @@ public class NewProjectController extends AbstractController {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			closeView();
+		}
+	}
+
+	private class BrowseButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			JFileChooser rootChooser = DialogHelper.createHomeFileChooser();
+			rootChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			
+			if (rootChooser.showDialog(null, "Create") == JFileChooser.APPROVE_OPTION) {
+				try {
+					File rootFolder = rootChooser.getSelectedFile();
+					view.fillRootPath(rootFolder.getCanonicalPath());
+				} catch (IOException e) {
+					displayErrorMessage("IOException", "An IO exception occured when trying to get the folder path.");
+					e.printStackTrace();
+				}
+		       }
 		}
 	}
 	
