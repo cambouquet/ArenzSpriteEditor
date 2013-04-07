@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 
 import com.arenz.spriteeditor.controller.AbstractController;
+import com.arenz.spriteeditor.controller.file.FileHelper;
 import com.arenz.spriteeditor.model.Project;
 import com.arenz.spriteeditor.ui.Viewable;
 import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
@@ -80,6 +81,8 @@ public class NewProjectController extends AbstractController {
 
 		private Project createNewProject() {
 			Project newProject = new Project(projectName, rootFolder);
+			String rootFolerPath = FileHelper.getCannonicalPathWithoutExceptions(rootFolder, NewProjectController.this);
+			File projectFile = new File(rootFolerPath);
 			return newProject;
 		}
 	}
@@ -98,13 +101,9 @@ public class NewProjectController extends AbstractController {
 			rootChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			
 			if (rootChooser.showDialog(getWindow().getViewWindow(), "Select") == JFileChooser.APPROVE_OPTION) {
-				try {
-					File rootFolder = rootChooser.getSelectedFile();
-					view.fillRootPath(rootFolder.getCanonicalPath());
-				} catch (IOException e) {
-					displayErrorMessage("IOException", "An IO exception occured when trying to get the folder path.");
-					e.printStackTrace();
-				}
+				File rootFolder = rootChooser.getSelectedFile();
+				String rootFolerPath = FileHelper.getCannonicalPathWithoutExceptions(rootFolder, NewProjectController.this);
+				view.fillRootPath(rootFolerPath);
 		       }
 		}
 	}

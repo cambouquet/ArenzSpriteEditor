@@ -4,11 +4,11 @@ import com.arenz.spriteeditor.ui.Viewable;
 import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 
 public abstract class AbstractController {
-	protected void displayErrorMessage(String title, String text) {
+	public void displayErrorMessage(String title, String text) {
 		DialogHelper.displayErrorMessage(getWindow().getViewWindow(), title, text);
 	}
 
-	protected void transferErrorMessage(String title, String text) {
+	public void transferErrorMessage(String title, String text) {
 		getParentController().displayErrorMessage(title, text);
 	}
 	
