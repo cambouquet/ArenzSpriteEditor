@@ -17,8 +17,10 @@ public class MainController extends AbstractController {
 	
 	private Project project;
 	
+	private static final String SOFTWARE_NAME = "Sprite Editor";
+	
 	public MainController() {
-		mainView = new MainWindowView(this, "Sprite Editor");
+		mainView = new MainWindowView(this, SOFTWARE_NAME);
 		
 		createsMenu();
 	}
@@ -31,7 +33,7 @@ public class MainController extends AbstractController {
 
 	public void setProject(Project newProject) {
 		this.project = newProject;
-		mainView.updateTitle(project.getTitle());
+		mainView.updateTitle(SOFTWARE_NAME + " - " + project.getTitle());
 	}
 
 	@Override
