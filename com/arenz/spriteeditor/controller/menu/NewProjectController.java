@@ -81,9 +81,23 @@ public class NewProjectController extends AbstractController {
 
 		private Project createNewProject() {
 			Project newProject = new Project(projectName, rootFolder);
-			String rootFolerPath = FileHelper.getCannonicalPathWithoutException(rootFolder, NewProjectController.this);
-			File projectFile = new File(rootFolerPath);
+			File projectFolder = FileHelper.createNewFolder(rootFolder, projectName);
+			createSpriteFolders(projectFolder);
+			
 			return newProject;
+		}
+
+		private void createSpriteFolders(File projectFolder) {
+			createSpriteFolder(projectFolder, "New");
+			createSpriteFolder(projectFolder, "Ground");
+			createSpriteFolder(projectFolder, "Wall");
+			createSpriteFolder(projectFolder, "Door");
+			createSpriteFolder(projectFolder, "Character");
+			createSpriteFolder(projectFolder, "Furniture");
+		}
+
+		private void createSpriteFolder(File projectFolder, String folderName) {
+			FileHelper.createNewFolder(projectFolder, folderName);
 		}
 	}
 	
@@ -102,7 +116,7 @@ public class NewProjectController extends AbstractController {
 			
 			if (rootChooser.showDialog(getWindow().getViewWindow(), "Select") == JFileChooser.APPROVE_OPTION) {
 				File rootFolder = rootChooser.getSelectedFile();
-				String rootFolerPath = FileHelper.getCannonicalPathWithoutException(rootFolder, NewProjectController.this);
+				String rootFolerPath = FileHelper.getCannonicalPath(rootFolder, NewProjectController.this);
 				view.fillRootPath(rootFolerPath);
 		       }
 		}
