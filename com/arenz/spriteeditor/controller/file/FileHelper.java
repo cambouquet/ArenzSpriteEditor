@@ -13,7 +13,7 @@ import com.arenz.spriteeditor.controller.AbstractController;
  *
  */
 public class FileHelper {
-	public static String getCannonicalPathWithoutExceptions(File file, AbstractController controller) {
+	public static String getCannonicalPathWithoutException(File file, AbstractController controller) {
 		String filePath = null;
 		try {
 			filePath = file.getCanonicalPath();
