@@ -1,12 +1,16 @@
 package com.arenz.spriteeditor.controller;
 
-import javax.swing.JFrame;
+import java.util.ArrayList;
+import java.util.Locale.Category;
 
 import com.arenz.spriteeditor.controller.menu.MenuController;
+import com.arenz.spriteeditor.model.DisplayableElement;
 import com.arenz.spriteeditor.model.Project;
+import com.arenz.spriteeditor.model.SpriteCategories;
+import com.arenz.spriteeditor.model.SpriteCategory;
 import com.arenz.spriteeditor.ui.MainWindowView;
+import com.arenz.spriteeditor.ui.SpriteSelectionView;
 import com.arenz.spriteeditor.ui.Viewable;
-import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
 import com.arenz.spriteeditor.ui.menu.MenuView;
 
 public class MainController extends AbstractController {
@@ -15,6 +19,8 @@ public class MainController extends AbstractController {
 	
 	private MenuController menuController;
 	
+	private SpriteSelectionController spriteSelectionController;
+	
 	private Project project;
 	
 	private static final String SOFTWARE_NAME = "Sprite Editor";
@@ -22,10 +28,24 @@ public class MainController extends AbstractController {
 	public MainController() {
 		mainView = new MainWindowView(this, SOFTWARE_NAME);
 		
-		createsMenu();
+		createMenu();
+		createMainPanels();
 	}
 	
-	private void createsMenu() {
+	private void createMainPanels() {
+		createSpriteSelectionPanel();
+	}
+
+	private void createSpriteSelectionPanel() {
+		SpriteCategories categories = new SpriteCategories();
+		SpriteCategory category = new SpriteCategory("New", new ArrayList<DisplayableElement>());
+		categories.add(category);
+		SpriteSelectionView spriteSelectionView = new SpriteSelectionView(categories);
+		spriteSelectionController = new SpriteSelectionController(this, spriteSelectionView);
+		mainView.setSpriteSelectionPanel(spriteSelectionView);
+	}
+
+	private void createMenu() {
 		MenuView menuView = new MenuView();
 		menuController = new MenuController(this, menuView);
 		mainView.setMenu(menuView);

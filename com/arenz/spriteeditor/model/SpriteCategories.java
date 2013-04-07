@@ -4,13 +4,16 @@ import java.util.ArrayList;
 
 public class SpriteCategories {
 	private ArrayList<SpriteCategory> categories;
+	
+	public SpriteCategories() {
+		categories = new ArrayList<SpriteCategory>();
+	}
 
 	public int getCategoriesCount() {
 		return categories.size();
 	}
 
-	public int getNbreCategories() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void add(SpriteCategory spriteCategory) {
+		categories.add(spriteCategory);
 	}
 }

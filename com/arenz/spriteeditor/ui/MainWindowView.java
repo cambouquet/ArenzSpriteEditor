@@ -19,6 +19,7 @@ public class MainWindowView implements Viewable {
 	
 	private JFrame window = new JFrame();
 	private MenuView menu;
+	private SpriteSelectionView spriteSelection;
 	
 	private MainController controller;
 
@@ -40,5 +41,11 @@ public class MainWindowView implements Viewable {
 
 	public Frame getViewWindow() {
 		return window;
+	}
+
+	public void setSpriteSelectionPanel(SpriteSelectionView spriteSelectionView) {
+		spriteSelection = spriteSelectionView;
+		window.add(spriteSelection.getMainComponent());
+		window.revalidate();
 	}
 }

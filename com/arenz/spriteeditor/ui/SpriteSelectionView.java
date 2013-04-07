@@ -4,9 +4,6 @@ package com.arenz.spriteeditor.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,12 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
-import com.arenz.spriteeditor.model.DisplayableElement;
 import com.arenz.spriteeditor.model.SpriteCategories;
-import com.arenz.spriteeditor.model.SpriteCategory;
 
 	public class SpriteSelectionView {
-		private JPanel spriteSelectionPanel;
+		private JPanel spriteSelectionPanel = new JPanel();
 		private JScrollPane categoriesScrollPane;
 		private JScrollPane spritesScrollPane;
 		private JPanel categoriesPanel = new JPanel();
@@ -29,8 +24,9 @@ import com.arenz.spriteeditor.model.SpriteCategory;
 		
 		private SpriteCategories categories;
 		
-		public SpriteSelectionView()
+		public SpriteSelectionView(SpriteCategories categories)
 		{
+			this.categories = categories;
 			// Bordure du panneau Selection
 			spriteSelectionPanel.setBorder(BorderFactory.createRaisedBevelBorder());
 			
@@ -111,7 +107,7 @@ import com.arenz.spriteeditor.model.SpriteCategory;
 */		
 		private void verifyCategoryNumber()
 		{
-			int nbreCategories = categories.getNbreCategories();
+			int nbreCategories = categories.getCategoriesCount();
 			if (nbreCategories > 1)
 			{
 				spriteSelectionPanel.add(categoriesScrollPane, BorderLayout.NORTH);
@@ -175,4 +171,8 @@ import com.arenz.spriteeditor.model.SpriteCategory;
 			this.selectionnerCategorie(null);
 	    }
 */
+
+		public Component getMainComponent() {
+			return spriteSelectionPanel;
+		}
 }
