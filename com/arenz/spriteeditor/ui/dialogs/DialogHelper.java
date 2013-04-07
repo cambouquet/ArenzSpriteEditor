@@ -25,7 +25,9 @@ public abstract class DialogHelper {
 	
 	public static JFileChooser createHomeFileChooser() {
 		FileSystemView systemView = FileSystemView.getFileSystemView();
-		File homeFile = systemView.getHomeDirectory();
+		// Hijack to speed tests
+		//File homeFile = systemView.getHomeDirectory();
+		File homeFile = new File("C:\\Users\\Camille\\Informatique\\projets\\Arene V2\\SpriteEditor\\Tests");
 		
 		return new JFileChooser(homeFile);
 	}
