@@ -10,11 +10,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import com.arenz.spriteeditor.ui.LayoutHelper;
 import com.arenz.spriteeditor.ui.Viewable;
-import com.arenz.spriteeditor.ui.dialogs.elements.LabelTextField;
 
 /**
  * @author Camille
@@ -24,8 +25,10 @@ public class NewProjectDialog extends JDialog implements Viewable {
 	private JPanel buttonsPanel = new JPanel();
 	private JPanel elementsPanel = new JPanel();
 	
-	private LabelTextField nameTextField;
-	private LabelTextField rootFolderTextField;
+	private JTextField nameTextField;
+	private JTextField rootFolderTextField;
+	private JLabel nameLabel;
+	private JLabel rootFolderLabel;
 	private JButton browseButton;
 	
 	private JButton okButton;
@@ -55,15 +58,19 @@ public class NewProjectDialog extends JDialog implements Viewable {
 	}
 
 	private void initElements() {
-		nameTextField = new LabelTextField("Name", 20);
-		rootFolderTextField = new LabelTextField("Path", 50);
+		nameTextField = new JTextField(20);
+		rootFolderTextField = new JTextField(50);
+		nameLabel = new JLabel("Name");
+		rootFolderLabel = new JLabel("Root folder");
 		browseButton = new JButton("Browse");
 	}
 
 	private void addElements() {
-		elementsPanel.add(nameTextField, LayoutHelper.getGridBagConstraints(0, 0, 2, 1));
-		elementsPanel.add(rootFolderTextField, LayoutHelper.getGridBagConstraints(0, 1, 1, 1));
-		elementsPanel.add(browseButton, LayoutHelper.getGridBagConstraints(1, 1, 1, 1));
+		elementsPanel.add(nameLabel, LayoutHelper.getGridBagConstraints(0, 0, 1, 1));
+		elementsPanel.add(nameTextField, LayoutHelper.getGridBagConstraints(1, 0, 2, 1));
+		elementsPanel.add(rootFolderLabel, LayoutHelper.getGridBagConstraints(0, 1, 1, 1));
+		elementsPanel.add(rootFolderTextField, LayoutHelper.getGridBagConstraints(1, 1, 1, 1));
+		elementsPanel.add(browseButton, LayoutHelper.getGridBagConstraints(2, 1, 1, 1));
 	}
 
 	private void addButtons() {
