@@ -3,7 +3,9 @@ package com.arenz.spriteeditor.model;
 import java.awt.Image;
 import java.io.File;
 
-public class Sprite {
+import javax.swing.ImageIcon;
+
+public class Sprite implements DisplayableElement {
 	private Image image;
 	private File file;
 	
@@ -16,11 +18,22 @@ public class Sprite {
 		this.file = new File(folder, name);
 	}
 	
+	@Override
 	public Image getImage() {
 		return this.image;
 	}
 
 	public File getFile() {
 		return this.file;
+	}
+
+	@Override
+	public String getNom() {
+		return file.getName();
+	}
+
+	@Override
+	public ImageIcon getIcon() {
+		return new ImageIcon(image);
 	}
 }
