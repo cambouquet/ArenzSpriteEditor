@@ -4,6 +4,7 @@
 package com.arenz.spriteeditor.model;
 
 import java.io.File;
+import java.util.Properties;
 
 /**
  * @author Camille
