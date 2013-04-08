@@ -21,8 +21,6 @@ public class MainWindowView implements Viewable {
 	private MenuView menu;
 	private SpriteSelectionView spriteSelection;
 	
-	private MainController controller;
-
 	public MainWindowView(MainController controller, String title) {
 		window.setTitle(title);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
