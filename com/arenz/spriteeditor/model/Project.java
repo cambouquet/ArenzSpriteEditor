@@ -11,16 +11,14 @@ import java.util.Properties;
  *
  */
 public class Project {
-	private String title;
 	private File rootFolder;
 	
-	public Project(String title, File rootFolder) {
-		this.title = title;
+	public Project(File rootFolder) {
 		this.rootFolder = rootFolder;
 	}
 	
 	public String getTitle() {
-		return this.title;
+		return rootFolder.getName();
 	}
 	
 	public File getRootFolder() {

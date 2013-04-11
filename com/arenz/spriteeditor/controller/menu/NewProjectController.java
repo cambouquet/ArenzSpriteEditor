@@ -80,8 +80,8 @@ public class NewProjectController extends AbstractController {
 		}
 
 		private Project createNewProject() {
-			Project newProject = new Project(projectName, rootFolder);
 			File projectFolder = FileHelper.createNewFolder(rootFolder, projectName);
+			Project newProject = new Project(projectFolder);
 			createSpriteFolders(projectFolder);
 			
 			return newProject;

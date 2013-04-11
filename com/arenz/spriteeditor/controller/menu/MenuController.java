@@ -5,9 +5,13 @@ package com.arenz.spriteeditor.controller.menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.swing.JFileChooser;
 
 import com.arenz.spriteeditor.controller.AbstractController;
 import com.arenz.spriteeditor.controller.MainController;
+import com.arenz.spriteeditor.controller.file.FileHelper;
 import com.arenz.spriteeditor.model.Project;
 import com.arenz.spriteeditor.ui.Viewable;
 import com.arenz.spriteeditor.ui.dialogs.DialogHelper;
@@ -63,7 +67,18 @@ public class MenuController extends AbstractController {
 	public class OpenProjectListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			DialogHelper.displayNotImplementedDialog();
+			JFileChooser rootChooser = DialogHelper.createHomeFileChooser();
+			rootChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			
+			if (rootChooser.showDialog(getWindow().getViewWindow(), "Select") == JFileChooser.APPROVE_OPTION) {
+				File rootFolder = rootChooser.getSelectedFile();
+				openProject(rootFolder);
+		       }
+		}
+
+		private void openProject(File rootFolder) {
+			Project newProject = new Project(rootFolder);
+			setProject(newProject);
 		}
 	}
 
