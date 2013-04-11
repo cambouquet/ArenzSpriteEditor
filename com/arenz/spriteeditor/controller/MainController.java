@@ -38,7 +38,7 @@ public class MainController extends AbstractController {
 
 	private void createSpriteSelectionPanel() {
 		SpriteCategories categories = new SpriteCategories();
-		SpriteCategory category = new SpriteCategory("New", new ArrayList<DisplayableElement>());
+		SpriteCategory category = new SpriteCategory("New", 0, new ArrayList<DisplayableElement>());
 		categories.add(category);
 		SpriteSelectionView spriteSelectionView = new SpriteSelectionView(categories);
 		spriteSelectionController = new SpriteSelectionController(this, spriteSelectionView);

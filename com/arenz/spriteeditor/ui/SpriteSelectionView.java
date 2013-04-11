@@ -27,7 +27,6 @@ import com.arenz.spriteeditor.model.SpriteCategories;
 		public SpriteSelectionView(SpriteCategories categories)
 		{
 			this.categories = categories;
-			// Bordure du panneau Selection
 			spriteSelectionPanel.setBorder(BorderFactory.createRaisedBevelBorder());
 			
 			spriteSelectionPanel.setLayout(new BorderLayout());
@@ -44,14 +43,10 @@ import com.arenz.spriteeditor.model.SpriteCategories;
 		private JScrollPane createScrollPane(String titre, JPanel contenu)
 		{
 			JScrollPane jsp = new JScrollPane(contenu);
-			// Bordure des panneaux internes
 			jsp.setBorder(new TitledBorder(BorderFactory.createLoweredBevelBorder(), titre));
 			
-			// Barres de défilement
-			jsp
-	        .setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-			jsp
-	        .setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+			jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 			return jsp;
 		}
@@ -107,8 +102,8 @@ import com.arenz.spriteeditor.model.SpriteCategories;
 */		
 		private void verifyCategoryNumber()
 		{
-			int nbreCategories = categories.getCategoriesCount();
-			if (nbreCategories > 1)
+			int nbrCategories = categories.getCategoriesCount();
+			if (nbrCategories > 1)
 			{
 				spriteSelectionPanel.add(categoriesScrollPane, BorderLayout.NORTH);
 			}

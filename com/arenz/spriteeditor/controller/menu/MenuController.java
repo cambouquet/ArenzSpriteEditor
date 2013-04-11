@@ -32,7 +32,7 @@ public class MenuController extends AbstractController {
 	private void addListeners() {
 		menuView.addNewProjectListener(new NewProjectListener());
 		menuView.addSaveProjectListener(new SaveProjectListener());
-		menuView.addLoadProjectListener(new LoadProjectListener());
+		menuView.addOpenProjectListener(new OpenProjectListener());
 		
 		menuView.addQuitProjectListener(new ActionListener()
 		{
@@ -60,7 +60,7 @@ public class MenuController extends AbstractController {
 		}
 	}
 
-	public class LoadProjectListener implements ActionListener {
+	public class OpenProjectListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			DialogHelper.displayNotImplementedDialog();

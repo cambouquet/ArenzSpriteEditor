@@ -7,15 +7,11 @@ import javax.swing.ImageIcon;
 
 public class Sprite implements DisplayableElement {
 	private Image image;
-	private File file;
+	private String name;
 	
-	public Sprite(File file) {
-		this.file = file;
-	}
-
-	public Sprite(Image image, File folder, String name) {
+	public Sprite(Image image, String name) {
 		this.image = image;
-		this.file = new File(folder, name);
+		this.name = name;
 	}
 	
 	@Override
@@ -23,13 +19,9 @@ public class Sprite implements DisplayableElement {
 		return this.image;
 	}
 
-	public File getFile() {
-		return this.file;
-	}
-
 	@Override
 	public String getNom() {
-		return file.getName();
+		return this.name;
 	}
 
 	@Override

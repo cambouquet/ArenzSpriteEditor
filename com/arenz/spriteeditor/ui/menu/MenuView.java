@@ -27,7 +27,7 @@ public class MenuView {
 	private JMenu menuProject = new JMenu("Project");
 	private JMenuItem menuNew = new JMenuItem("New");
 	private JMenuItem menuSave = new JMenuItem("Save");
-	private JMenuItem menuLoad = new JMenuItem("Load");
+	private JMenuItem menuOpen = new JMenuItem("Open");
 	private JMenuItem menuQuit = new JMenuItem("Quit");
 	
 	public MenuView() {
@@ -38,7 +38,7 @@ public class MenuView {
 	private void createsMenu() {
 		menuProject.add(menuNew);
 		menuProject.add(menuSave);
-		menuProject.add(menuLoad);
+		menuProject.add(menuOpen);
 		menuProject.add(menuQuit);
 		
 		menuBar.add(menuProject);
@@ -49,12 +49,12 @@ public class MenuView {
 		
 		menuNew.setMnemonic(KeyEvent.VK_N);
 		menuSave.setMnemonic(KeyEvent.VK_S);
-		menuLoad.setMnemonic(KeyEvent.VK_L);
+		menuOpen.setMnemonic(KeyEvent.VK_O);
 		menuQuit.setMnemonic(KeyEvent.VK_Q);
 		
 		MenuHelper.setAccelerator(menuNew, KeyEvent.VK_N,  KeyEvent.CTRL_MASK);
 		MenuHelper.setAccelerator(menuSave, KeyEvent.VK_S,  KeyEvent.CTRL_MASK);
-		MenuHelper.setAccelerator(menuLoad, KeyEvent.VK_L,  KeyEvent.CTRL_MASK);
+		MenuHelper.setAccelerator(menuOpen, KeyEvent.VK_O,  KeyEvent.CTRL_MASK);
 		MenuHelper.setAccelerator(menuQuit, KeyEvent.VK_Q,  KeyEvent.CTRL_MASK);
 	}
 
@@ -70,8 +70,8 @@ public class MenuView {
 		menuSave.addActionListener(saveProjectListener);
 	}
 	
-	public void addLoadProjectListener(ActionListener loadProjectListener) {
-		menuLoad.addActionListener(loadProjectListener);
+	public void addOpenProjectListener(ActionListener loadProjectListener) {
+		menuOpen.addActionListener(loadProjectListener);
 	}
 	
 	public void addQuitProjectListener(ActionListener quitProjectListener) {
