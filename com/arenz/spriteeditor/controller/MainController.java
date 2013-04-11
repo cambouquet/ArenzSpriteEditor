@@ -1,11 +1,19 @@
 package com.arenz.spriteeditor.controller;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale.Category;
 
+import javax.imageio.ImageIO;
+
+import com.arenz.spriteeditor.controller.file.ImageFileFilter;
 import com.arenz.spriteeditor.controller.menu.MenuController;
 import com.arenz.spriteeditor.model.DisplayableElement;
 import com.arenz.spriteeditor.model.Project;
+import com.arenz.spriteeditor.model.Sprite;
 import com.arenz.spriteeditor.model.SpriteCategories;
 import com.arenz.spriteeditor.model.SpriteCategory;
 import com.arenz.spriteeditor.ui.MainWindowView;
@@ -41,7 +49,7 @@ public class MainController extends AbstractController {
 		SpriteCategory category = new SpriteCategory("New", 0, new ArrayList<DisplayableElement>());
 		categories.add(category);
 		SpriteSelectionView spriteSelectionView = new SpriteSelectionView(categories);
-		spriteSelectionController = new SpriteSelectionController(this, spriteSelectionView);
+		spriteSelectionController = new SpriteSelectionController(this, spriteSelectionView, categories);
 		mainView.setSpriteSelectionPanel(spriteSelectionView);
 	}
 
@@ -51,9 +59,43 @@ public class MainController extends AbstractController {
 		mainView.setMenu(menuView);
 	}
 
-	public void setProject(Project newProject) {
+	/**
+	 * Called for a new or a newly opened project.
+	 * @param newProject
+	 */
+	public void setNewProject(Project newProject) {
 		this.project = newProject;
 		mainView.updateTitle(SOFTWARE_NAME + " - " + project.getTitle());
+		loadImages();
+	}
+
+	private void loadImages() {
+		File projectFolder = project.getRootFolder();
+		for (File child : projectFolder.listFiles()) {
+			loadImagesFromFolder(child);
+		}
+	}
+
+	private void loadImagesFromFolder(File file) {
+		FileFilter fileFilter = new ImageFileFilter();
+		
+		if (file.isDirectory()) {
+			ArrayList<DisplayableElement> spriteList = new ArrayList<DisplayableElement>();
+			for (File child : file.listFiles(fileFilter)) {
+				Image image;
+				try {
+					image = ImageIO.read(child);
+					Sprite sprite = new Sprite(image, child.getName());
+					spriteList.add(sprite);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			SpriteCategory category = new SpriteCategory(file.getName(), 0, spriteList);
+			spriteSelectionController.addCategory(category);
+			System.out.println("New category added: " + category.getNom());
+		}
 	}
 
 	@Override

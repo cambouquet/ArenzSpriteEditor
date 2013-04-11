@@ -83,7 +83,7 @@ public class MenuController extends AbstractController {
 	}
 
 	public void setProject(Project project) {
-		parentController.setProject(project);
+		parentController.setNewProject(project);
 	}
 
 	@Override
