@@ -204,6 +204,7 @@ import com.arenz.spriteeditor.ui.components.SpriteButton;
 			}
 			
 			spritesPanel.revalidate();
+			spritesPanel.repaint();
 		}
 
 		private CategoryButton retrieveCategoryButton(SpriteCategory category) {
