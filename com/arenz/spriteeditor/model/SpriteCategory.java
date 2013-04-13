@@ -37,4 +37,18 @@ public class SpriteCategory {
 		return returnElement;
 	}
 
+	public boolean equals(Object other) {
+		if (this == other) return true;
+		if (!(other instanceof SpriteCategory)) {
+			return false;
+		}
+
+		final SpriteCategory cat = (SpriteCategory) other;
+
+		if ( !(cat.getId() == this.id) ) {
+			return false;
+		}
+
+		return true;
+	}
 }

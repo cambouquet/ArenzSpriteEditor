@@ -25,4 +25,8 @@ public class SpriteCategories {
 	public void clear() {
 		categories.clear();
 	}
+
+	public SpriteCategory getCategoryAt(int i) {
+		return categories.get(i);
+	}
 }

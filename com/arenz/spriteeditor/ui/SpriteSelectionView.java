@@ -4,6 +4,7 @@ package com.arenz.spriteeditor.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.event.ActionListener;
 import java.util.Iterator;
 
 import javax.swing.BorderFactory;
@@ -12,8 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
+import com.arenz.spriteeditor.controller.SpriteSelectionController.CategorySelectionListener;
 import com.arenz.spriteeditor.model.SpriteCategories;
 import com.arenz.spriteeditor.model.SpriteCategory;
+import com.arenz.spriteeditor.ui.components.CategoryButton;
 
 	public class SpriteSelectionView {
 		private JPanel spriteSelectionPanel = new JPanel();
@@ -21,7 +24,7 @@ import com.arenz.spriteeditor.model.SpriteCategory;
 		private JScrollPane spritesScrollPane;
 		private JPanel categoriesPanel = new JPanel();
 		private JPanel spritesPanel = new JPanel();
-		private JButton selectedCategory;
+		private CategoryButton selectedCategory;
 		private JButton selectedSprite;
 		
 		private SpriteCategories categories;
@@ -178,11 +181,52 @@ import com.arenz.spriteeditor.model.SpriteCategory;
 			categoriesPanel.removeAll();
 			while (categoriesIte.hasNext()) {
 				SpriteCategory category = categoriesIte.next();
-				JButton categoryButton = new JButton(category.getName());
+				CategoryButton categoryButton = new CategoryButton(category);
 				categoriesPanel.add(categoryButton);
 			}
+			selectCategory(categories.getCategoryAt(0));
 			
 			verifyCategoryNumber();
 			spriteSelectionPanel.revalidate();
+		}
+
+		public void selectCategory(SpriteCategory category) {
+			deselectSelectedCategory();
+			CategoryButton categoryButton = retrieveCategoryButton(category);
+			categoryButton.doClick();
+			this.selectedCategory = categoryButton;
+			System.out.println("Category " + category.getName() + " selected");
+		}
+
+		private CategoryButton retrieveCategoryButton(SpriteCategory category) {
+			CategoryButton catButton = null;
+			for (Component component : categoriesPanel.getComponents()) {
+				catButton = getCategoryButtonIfSameCategory(component, category);
+			}
+			return catButton;
+		}
+		
+		private CategoryButton getCategoryButtonIfSameCategory(Component component, SpriteCategory category) {
+			CategoryButton catButton = null;
+			
+			if (component instanceof CategoryButton) {
+				CategoryButton catChecked = (CategoryButton) component;
+				if (catChecked.isSameCategory(category)) {
+					catButton = catChecked;
+				}
+			}
+			
+			return catButton;
+		}
+
+		private void deselectSelectedCategory() {
+			if (selectedCategory != null) {
+				selectedCategory.setEnabled(false);
+			}
+		}
+		
+		public void addSpriteSelectionListener(SpriteCategory category, ActionListener listener) {
+			CategoryButton catButton = retrieveCategoryButton(category);	
+			catButton.addActionListener(listener);
 		}
 }
