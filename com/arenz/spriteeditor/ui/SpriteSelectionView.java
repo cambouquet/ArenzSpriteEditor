@@ -176,15 +176,10 @@ import com.arenz.spriteeditor.ui.components.CategoryButton;
 			return spriteSelectionPanel;
 		}
 
-		public void updateCategories() {
-			Iterator<SpriteCategory> categoriesIte = categories.getCategoriesIterator();
-			categoriesPanel.removeAll();
-			while (categoriesIte.hasNext()) {
-				SpriteCategory category = categoriesIte.next();
-				CategoryButton categoryButton = new CategoryButton(category);
-				categoriesPanel.add(categoryButton);
-			}
-			selectCategory(categories.getCategoryAt(0));
+		public void addCategory(SpriteCategory category, ActionListener listener) {
+			CategoryButton catButton = new CategoryButton(category);
+			catButton.addActionListener(listener);
+			categoriesPanel.add(catButton);
 			
 			verifyCategoryNumber();
 			spriteSelectionPanel.revalidate();

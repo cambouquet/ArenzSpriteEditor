@@ -32,8 +32,7 @@ public class SpriteSelectionController extends AbstractController {
 	
 	public void addCategory(SpriteCategory category) {
 		categories.add(category);
-		view.updateCategories();
-		view.addSpriteSelectionListener(category, new CategorySelectionListener(category));
+		view.addCategory(category, new CategorySelectionListener(category));
 	}
 	
 	public class CategorySelectionListener implements ActionListener {
