@@ -188,14 +188,15 @@ import com.arenz.spriteeditor.ui.components.CategoryButton;
 		public void selectCategory(SpriteCategory category) {
 			deselectSelectedCategory();
 			CategoryButton categoryButton = retrieveCategoryButton(category);
-			categoryButton.doClick();
 			this.selectedCategory = categoryButton;
 			System.out.println("Category " + category.getName() + " selected");
 		}
 
 		private CategoryButton retrieveCategoryButton(SpriteCategory category) {
 			CategoryButton catButton = null;
-			for (Component component : categoriesPanel.getComponents()) {
+			int i = 0;
+			while (i < categoriesPanel.getComponentCount() && catButton == null) {
+				Component component = categoriesPanel.getComponent(i);
 				catButton = getCategoryButtonIfSameCategory(component, category);
 			}
 			return catButton;
