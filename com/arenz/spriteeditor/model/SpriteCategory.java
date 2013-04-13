@@ -1,6 +1,7 @@
 package com.arenz.spriteeditor.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SpriteCategory {
 	private ArrayList<DisplayableElement> elements = new ArrayList<DisplayableElement>();
@@ -23,6 +24,10 @@ public class SpriteCategory {
 
 	public ArrayList<DisplayableElement> getElements() {
 		return this.elements;
+	}
+	
+	public Iterator<DisplayableElement> getElementsIterator() {
+		return this.elements.iterator();
 	}
 
 	public DisplayableElement getElement(String nom) {

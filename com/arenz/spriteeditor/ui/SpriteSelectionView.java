@@ -13,10 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
-import com.arenz.spriteeditor.controller.SpriteSelectionController.CategorySelectionListener;
+import com.arenz.spriteeditor.model.DisplayableElement;
 import com.arenz.spriteeditor.model.SpriteCategories;
 import com.arenz.spriteeditor.model.SpriteCategory;
 import com.arenz.spriteeditor.ui.components.CategoryButton;
+import com.arenz.spriteeditor.ui.components.SpriteButton;
 
 	public class SpriteSelectionView {
 		private JPanel spriteSelectionPanel = new JPanel();
@@ -189,7 +190,20 @@ import com.arenz.spriteeditor.ui.components.CategoryButton;
 			deselectSelectedCategory();
 			CategoryButton categoryButton = retrieveCategoryButton(category);
 			this.selectedCategory = categoryButton;
+			
+			displayImages(category);
 			System.out.println("Category " + category.getName() + " selected");
+		}
+
+		private void displayImages(SpriteCategory category) {
+			spritesPanel.removeAll();
+			Iterator<DisplayableElement> ite = category.getElementsIterator();
+			while (ite.hasNext()) {
+				DisplayableElement sprite = ite.next();
+				spritesPanel.add(new SpriteButton(sprite));
+			}
+			
+			spritesPanel.revalidate();
 		}
 
 		private CategoryButton retrieveCategoryButton(SpriteCategory category) {
