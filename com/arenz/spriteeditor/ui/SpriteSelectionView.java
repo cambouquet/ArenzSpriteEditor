@@ -174,10 +174,11 @@ import com.arenz.spriteeditor.model.SpriteCategory;
 		}
 
 		public void updateCategories() {
-			Iterator<SpriteCategory> categoriesIte = categories.getCategoriesAsArray();
+			Iterator<SpriteCategory> categoriesIte = categories.getCategoriesIterator();
+			categoriesPanel.removeAll();
 			while (categoriesIte.hasNext()) {
 				SpriteCategory category = categoriesIte.next();
-				JButton categoryButton = new JButton(category.getNom());
+				JButton categoryButton = new JButton(category.getName());
 				categoriesPanel.add(categoryButton);
 			}
 			

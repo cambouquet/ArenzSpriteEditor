@@ -18,8 +18,11 @@ public class SpriteCategories {
 		categories.add(spriteCategory);
 	}
 
-	public Iterator<SpriteCategory> getCategoriesAsArray() {
-		// TODO Auto-generated method stub
+	public Iterator<SpriteCategory> getCategoriesIterator() {
 		return categories.iterator();
+	}
+
+	public void clear() {
+		categories.clear();
 	}
 }

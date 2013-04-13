@@ -94,7 +94,7 @@ public class MainController extends AbstractController {
 			}
 			SpriteCategory category = new SpriteCategory(file.getName(), 0, spriteList);
 			spriteSelectionController.addCategory(category);
-			System.out.println("New category added: " + category.getNom());
+			System.out.println("New category added: " + category.getName());
 		}
 	}
 

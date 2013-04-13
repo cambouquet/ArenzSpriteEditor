@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class SpriteCategory {
 	private ArrayList<DisplayableElement> elements = new ArrayList<DisplayableElement>();
-	private String nom;
+	private String name;
 	private int id;
 
 	public SpriteCategory(String nom, int id, ArrayList<DisplayableElement> elements) {
-		this.nom = nom;
+		this.name = nom;
 		this.id = id;
 		this.elements = elements;
 	}
 
-	public String getNom() {
-		return this.nom;
+	public String getName() {
+		return this.name;
 	}
 
 	public int getId() {
