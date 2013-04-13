@@ -198,6 +198,7 @@ import com.arenz.spriteeditor.ui.components.CategoryButton;
 			while (i < categoriesPanel.getComponentCount() && catButton == null) {
 				Component component = categoriesPanel.getComponent(i);
 				catButton = getCategoryButtonIfSameCategory(component, category);
+				i ++;
 			}
 			return catButton;
 		}
@@ -217,7 +218,7 @@ import com.arenz.spriteeditor.ui.components.CategoryButton;
 
 		private void deselectSelectedCategory() {
 			if (selectedCategory != null) {
-				selectedCategory.setEnabled(false);
+				selectedCategory.setEnabled(true);
 			}
 		}
 		
