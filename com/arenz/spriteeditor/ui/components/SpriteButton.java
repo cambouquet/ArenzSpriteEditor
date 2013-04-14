@@ -32,6 +32,10 @@ public class SpriteButton extends SelectableButton {
 		revalidate();
 		repaint();
 	}
+	
+	public DisplayableElement getElement() {
+		return this.displayableElement;
+	}
 
 	@Override
 	public void paintComponent(Graphics g) {

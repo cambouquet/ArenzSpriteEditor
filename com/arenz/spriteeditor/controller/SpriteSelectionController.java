@@ -2,7 +2,9 @@ package com.arenz.spriteeditor.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
+import com.arenz.spriteeditor.model.DisplayableElement;
 import com.arenz.spriteeditor.model.SpriteCategories;
 import com.arenz.spriteeditor.model.SpriteCategory;
 import com.arenz.spriteeditor.ui.SpriteSelectionView;
@@ -39,7 +41,7 @@ public class SpriteSelectionController extends AbstractController {
 	public class CategorySelectionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			view.selectCategory((CategoryButton) arg0.getSource());
+			view.selectCategory((CategoryButton) arg0.getSource(), new SpriteSelectionListener());
 		}
 	}
 	

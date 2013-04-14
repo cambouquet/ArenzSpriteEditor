@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
+import com.arenz.spriteeditor.controller.SpriteSelectionController.SpriteSelectionListener;
 import com.arenz.spriteeditor.model.DisplayableElement;
 import com.arenz.spriteeditor.model.SpriteCategories;
 import com.arenz.spriteeditor.model.SpriteCategory;
@@ -95,68 +96,41 @@ public class SpriteSelectionView {
 		return spriteSelectionPanel;
 	}
 
-	public void addCategory(SpriteCategory category, ActionListener listener) {
+	public void addCategory(SpriteCategory category, ActionListener categoryListener) {
 		CategoryButton catButton = new CategoryButton(category);
-		catButton.addActionListener(listener);
+		catButton.addActionListener(categoryListener);
 		categoriesPanel.addButton(catButton);
 
 		verifyCategoryNumber();
 		spriteSelectionPanel.revalidate();
 	}
 
-	public void selectCategory(CategoryButton categoryButton) {
+	public void selectCategory(CategoryButton categoryButton, ActionListener spriteListener) {
 		this.selectedCategory = categoryButton;
 		categoriesPanel.selectButton(selectedCategory);
 		
 		SpriteCategory category = categoryButton.getCategory();
-		displayImages(category);
+		displayImages(category, spriteListener);
 		System.out.println("Category " + category.getName() + " selected");
 	}
 
-	private void displayImages(SpriteCategory category) {
+	private void displayImages(SpriteCategory category, ActionListener spriteListener) {
 		spritesPanel.removeAllButtons();
 		Iterator<DisplayableElement> ite = category.getElementsIterator();
 		while (ite.hasNext()) {
 			DisplayableElement sprite = ite.next();
-			spritesPanel.addButton(new SpriteButton(sprite));
+			SpriteButton spriteButton = new SpriteButton(sprite);
+			spriteButton.addActionListener(spriteListener);
+			spritesPanel.addButton(spriteButton);
 		}
 
 		spritesPanel.revalidate();
 		spritesPanel.repaint();
 	}
 
-	private CategoryButton retrieveCategoryButton(SpriteCategory category) {
-		CategoryButton catButton = null;
-		int i = 0;
-		while (i < categoriesPanel.getComponentCount() && catButton == null) {
-			Component component = categoriesPanel.getComponent(i);
-			catButton = getCategoryButtonIfSameCategory(component, category);
-			i++;
-		}
-		return catButton;
-	}
-
-	private CategoryButton getCategoryButtonIfSameCategory(Component component, SpriteCategory category) {
-		CategoryButton catButton = null;
-
-		if (component instanceof CategoryButton) {
-			CategoryButton catChecked = (CategoryButton) component;
-			if (catChecked.isSameCategory(category)) {
-				catButton = catChecked;
-			}
-		}
-
-		return catButton;
-	}
-
-	public void addSpriteSelectionListener(SpriteCategory category, ActionListener listener) {
-		CategoryButton catButton = retrieveCategoryButton(category);
-		catButton.addActionListener(listener);
-	}
-
 	public void selectSprite(SpriteButton spriteButton) {
 		this.selectedSprite = spriteButton;
 		spritesPanel.selectButton(selectedSprite);
-		System.out.println("Sprite " + spriteButton.getName() + " selected");
+		System.out.println("Sprite " + spriteButton.getElement().getName() + " selected");
 	}
 }
