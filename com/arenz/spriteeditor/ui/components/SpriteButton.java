@@ -17,13 +17,15 @@ import com.arenz.spriteeditor.model.DisplayableElement;
 
 public class SpriteButton extends JButton {
 	private DisplayableElement displayableElement;
+	private static final int HEIGHT_BUTTON = 32;
+	private static final int WIDTH_BUTTON = 32;
 
 	public SpriteButton(DisplayableElement dispEl) {
 		// super(dispEl.getIcon());
 		super();
 		displayableElement = dispEl;
-		setMinimumSize(new Dimension(32, 32));
-		setPreferredSize(new Dimension(32, 32));
+		setMinimumSize(new Dimension(WIDTH_BUTTON, HEIGHT_BUTTON));
+		setPreferredSize(new Dimension(WIDTH_BUTTON, HEIGHT_BUTTON));
 		setOpaque(false);
 		setToolTipText(displayableElement.getNom());
 
@@ -51,6 +53,7 @@ public class SpriteButton extends JButton {
 		}
 	}
 
+	// TODO: see UI
 	class ImageToolTipUI extends MetalToolTipUI {
 		private static final int V_MARGING = 5;
 		private static final int H_MARGING = 5;
