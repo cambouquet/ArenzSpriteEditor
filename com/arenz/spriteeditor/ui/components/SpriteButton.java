@@ -1,6 +1,5 @@
 package com.arenz.spriteeditor.ui.components;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -18,17 +17,13 @@ import com.arenz.spriteeditor.model.DisplayableElement;
 
 public class SpriteButton extends SelectableButton {
 	private DisplayableElement displayableElement;
-	private static final int HEIGHT_BUTTON = 35;
-	private static final int WIDTH_BUTTON = 35;
-	private static final int V_MARGIN_BUTTON = 3;
-	private static final int H_MARGIN_BUTTON = 3;
-
+	
 	public SpriteButton(DisplayableElement dispEl) {
 		// super(dispEl.getIcon());
 		super();
 		displayableElement = dispEl;
-		setMinimumSize(new Dimension(WIDTH_BUTTON, HEIGHT_BUTTON));
-		setPreferredSize(new Dimension(WIDTH_BUTTON, HEIGHT_BUTTON));
+		setMinimumSize(SizeHelper.getSpriteButtonSize());
+		setPreferredSize(SizeHelper.getSpriteButtonSize());
 		setOpaque(false);
 		setToolTipText(displayableElement.getName());
 		setBorder(BorderFactory.createRaisedBevelBorder());
@@ -52,13 +47,13 @@ public class SpriteButton extends SelectableButton {
 
 	@Override
 	public void paintComponent(Graphics g) {
-		int height = getHeight();
-		int width = getWidth();
+		int vMargin = SizeHelper.getSpriteButtonMargin().height;
+		int hMargin = SizeHelper.getSpriteButtonMargin().width;
 
 		if (displayableElement.getImage() != null) {
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-			g2d.drawImage(displayableElement.getImage(),H_MARGIN_BUTTON, V_MARGIN_BUTTON, width - H_MARGIN_BUTTON, height - V_MARGIN_BUTTON, null);
+			g2d.drawImage(displayableElement.getImage(),hMargin, vMargin, getWidth() - hMargin, getHeight() - vMargin, null);
 		}
 	}
 

@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
-import com.arenz.spriteeditor.controller.SpriteSelectionController.SpriteSelectionListener;
 import com.arenz.spriteeditor.model.DisplayableElement;
 import com.arenz.spriteeditor.model.SpriteCategories;
 import com.arenz.spriteeditor.model.SpriteCategory;
@@ -58,39 +57,6 @@ public class SpriteSelectionView {
 			spriteSelectionPanel.add(categoriesScrollPane, BorderLayout.NORTH);
 		}
 	}
-
-	/*
-	 * public void selectionnerCategorie(SpriteCategory categorie) {
-	 * spritesPanel.removeAll();
-	 * 
-	 * Component[] composantspCategories = categoriesPanel.getComponents(); for
-	 * (Component composant : composantspCategories) { if (composant instanceof
-	 * JButton) { JButton bouton = ((JButton) composant); if
-	 * (bouton.getText().equalsIgnoreCase(categorie.getNom()) &&
-	 * bouton.isEnabled()) { ((JButton) composant).doClick(); } } }
-	 * 
-	 * ArrayList<DisplayableElement> elements = categorie.getElements(); for
-	 * (DisplayableElement element : elements) { JButton bElement = new
-	 * JButton(element.getIcon()); bElement.setName(element.getNom());
-	 * bElement.addActionListener(new ActionListener(){
-	 * 
-	 * @Override public void actionPerformed(ActionEvent arg0) { JButton
-	 * boutonClique = ((JButton)arg0.getSource()); if (selectedSprite != null) {
-	 * selectedSprite.setEnabled(true); }
-	 * 
-	 * selectedSprite = boutonClique; boutonClique.setEnabled(false);
-	 * ctrlPS.selectionnerElement(boutonClique.getName()); }
-	 * 
-	 * }); spritesPanel.add(bElement); }
-	 * 
-	 * spritesPanel.revalidate(); spritesPanel.repaint();
-	 * spritesScrollPane.revalidate(); spritesScrollPane.repaint();
-	 * spriteSelectionPanel.revalidate(); spriteSelectionPanel.repaint(); }
-	 * 
-	 * public void deselectionnerCategories() {
-	 * this.selectedCategory.setEnabled(true); this.selectedCategory = null;
-	 * this.selectionnerCategorie(null); }
-	 */
 
 	public Component getMainComponent() {
 		return spriteSelectionPanel;
