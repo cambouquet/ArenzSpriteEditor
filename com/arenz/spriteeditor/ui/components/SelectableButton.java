@@ -13,6 +13,6 @@ public class SelectableButton extends JButton {
 	}
 	
 	public void selectButton(boolean selected) {
-		setEnabled(selected);
+		setEnabled(!selected);
 	}
 }

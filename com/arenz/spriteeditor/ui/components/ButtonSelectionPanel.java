@@ -12,13 +12,14 @@ public class ButtonSelectionPanel extends JPanel {
 		deselectSelectedButton();
 		selectedButton = button;
 		selectedButton.selectButton(true);
+		revalidate();
 	}
 
 	private void deselectSelectedButton() {
 		if (selectedButton != null) {
 			selectedButton.selectButton(false);
+			selectedButton = null;
 		}
-		selectedButton = null;
 	}
 	
 	public void addButton(SelectableButton button) {

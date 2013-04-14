@@ -107,9 +107,10 @@ public class SpriteSelectionView {
 	public void selectCategory(CategoryButton categoryButton) {
 		this.selectedCategory = categoryButton;
 		categoriesPanel.selectButton(selectedCategory);
-
-		displayImages(categoryButton.getCategory());
-		System.out.println("Category " + categoryButton.getName() + " selected");
+		
+		SpriteCategory category = categoryButton.getCategory();
+		displayImages(category);
+		System.out.println("Category " + category.getName() + " selected");
 	}
 
 	private void displayImages(SpriteCategory category) {
