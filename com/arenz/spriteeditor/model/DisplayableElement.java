@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public interface DisplayableElement {
 
-	public String getNom();
+	public String getName();
 
 	public Image getImage();
 	

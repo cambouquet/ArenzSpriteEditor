@@ -8,6 +8,7 @@ import com.arenz.spriteeditor.model.SpriteCategory;
 import com.arenz.spriteeditor.ui.SpriteSelectionView;
 import com.arenz.spriteeditor.ui.Viewable;
 import com.arenz.spriteeditor.ui.components.CategoryButton;
+import com.arenz.spriteeditor.ui.components.SpriteButton;
 
 public class SpriteSelectionController extends AbstractController {
 	private MainController parentController;
@@ -32,20 +33,20 @@ public class SpriteSelectionController extends AbstractController {
 	
 	public void addCategory(SpriteCategory category) {
 		categories.add(category);
-		view.addCategory(category, new CategorySelectionListener(category));
+		view.addCategory(category, new CategorySelectionListener());
 	}
 	
 	public class CategorySelectionListener implements ActionListener {
-		private SpriteCategory category;
-		
-		public CategorySelectionListener(SpriteCategory category) {
-			this.category = category;
-		}
-
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			view.selectCategory(category);
-			((CategoryButton) arg0.getSource()).setEnabled(false);
+			view.selectCategory((CategoryButton) arg0.getSource());
+		}
+	}
+	
+	public class SpriteSelectionListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			view.selectSprite((SpriteButton) arg0.getSource());
 		}
 	}
 }

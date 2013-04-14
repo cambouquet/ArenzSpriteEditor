@@ -34,7 +34,7 @@ public class SpriteCategory {
 		DisplayableElement returnElement = null;
 		
 		for (DisplayableElement element : elements) {
-			if (element.getNom().equals(nom)) {
+			if (element.getName().equals(nom)) {
 				returnElement = element;
 			}
 		}

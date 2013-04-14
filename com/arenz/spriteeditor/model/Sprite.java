@@ -22,7 +22,7 @@ public class Sprite implements DisplayableElement {
 	}
 
 	@Override
-	public String getNom() {
+	public String getName() {
 		return this.name;
 	}
 

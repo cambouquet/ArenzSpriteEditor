@@ -15,7 +15,7 @@ import javax.swing.plaf.metal.MetalToolTipUI;
 
 import com.arenz.spriteeditor.model.DisplayableElement;
 
-public class SpriteButton extends JButton {
+public class SpriteButton extends SelectableButton {
 	private DisplayableElement displayableElement;
 	private static final int HEIGHT_BUTTON = 32;
 	private static final int WIDTH_BUTTON = 32;
@@ -27,7 +27,7 @@ public class SpriteButton extends JButton {
 		setMinimumSize(new Dimension(WIDTH_BUTTON, HEIGHT_BUTTON));
 		setPreferredSize(new Dimension(WIDTH_BUTTON, HEIGHT_BUTTON));
 		setOpaque(false);
-		setToolTipText(displayableElement.getNom());
+		setToolTipText(displayableElement.getName());
 
 		revalidate();
 		repaint();
@@ -71,6 +71,7 @@ public class SpriteButton extends JButton {
 			if (tipText == null) {
 				tipText = "";
 			}
+
 			Image image = displayableElement.getImage();
 			int width = SwingUtilities.computeStringWidth(metrics, tipText) + H_MARGING;
 			int height = metrics.getHeight() + image.getHeight(c) + V_MARGING;

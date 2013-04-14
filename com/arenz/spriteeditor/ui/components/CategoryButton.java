@@ -1,12 +1,8 @@
 package com.arenz.spriteeditor.ui.components;
 
-import java.util.Locale.Category;
-
-import javax.swing.JButton;
-
 import com.arenz.spriteeditor.model.SpriteCategory;
 
-public class CategoryButton extends JButton {
+public class CategoryButton extends SelectableButton {
 	private SpriteCategory category;
 	
 	public CategoryButton(SpriteCategory category) {
