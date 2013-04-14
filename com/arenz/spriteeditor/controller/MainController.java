@@ -64,6 +64,7 @@ public class MainController extends AbstractController {
 	 */
 	public void setNewProject(Project newProject) {
 		this.project = newProject;
+		createSpriteSelectionPanel();
 		mainView.updateTitle(SOFTWARE_NAME + " - " + project.getTitle());
 		loadImages();
 	}

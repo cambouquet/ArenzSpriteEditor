@@ -42,8 +42,12 @@ public class MainWindowView implements Viewable {
 	}
 
 	public void setSpriteSelectionPanel(SpriteSelectionView spriteSelectionView) {
+		if (spriteSelection != null) {
+			window.remove(this.spriteSelection.getMainComponent());
+		}
 		spriteSelection = spriteSelectionView;
 		window.add(spriteSelection.getMainComponent());
 		window.revalidate();
+		window.repaint();
 	}
 }

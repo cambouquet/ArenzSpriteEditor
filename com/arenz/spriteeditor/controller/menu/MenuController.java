@@ -78,11 +78,11 @@ public class MenuController extends AbstractController {
 
 		private void openProject(File rootFolder) {
 			Project newProject = new Project(rootFolder);
-			setProject(newProject);
+			setNewProject(newProject);
 		}
 	}
 
-	public void setProject(Project project) {
+	public void setNewProject(Project project) {
 		parentController.setNewProject(project);
 	}
 

@@ -55,7 +55,7 @@ public class NewProjectController extends AbstractController {
 			
 			if (areValid) {
 				Project project = createNewProject();
-				parentController.setProject(project);
+				parentController.setNewProject(project);
 				closeView();
 			} else {
 				displayErrorMessage(
