@@ -13,6 +13,7 @@ public class ButtonSelectionPanel extends JPanel {
 		selectedButton = button;
 		selectedButton.selectButton(true);
 		revalidate();
+		repaint();
 	}
 
 	private void deselectSelectedButton() {

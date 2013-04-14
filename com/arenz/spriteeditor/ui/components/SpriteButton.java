@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JToolTip;
 import javax.swing.SwingUtilities;
@@ -17,8 +18,10 @@ import com.arenz.spriteeditor.model.DisplayableElement;
 
 public class SpriteButton extends SelectableButton {
 	private DisplayableElement displayableElement;
-	private static final int HEIGHT_BUTTON = 32;
-	private static final int WIDTH_BUTTON = 32;
+	private static final int HEIGHT_BUTTON = 35;
+	private static final int WIDTH_BUTTON = 35;
+	private static final int V_MARGIN_BUTTON = 3;
+	private static final int H_MARGIN_BUTTON = 3;
 
 	public SpriteButton(DisplayableElement dispEl) {
 		// super(dispEl.getIcon());
@@ -28,9 +31,19 @@ public class SpriteButton extends SelectableButton {
 		setPreferredSize(new Dimension(WIDTH_BUTTON, HEIGHT_BUTTON));
 		setOpaque(false);
 		setToolTipText(displayableElement.getName());
-
+		setBorder(BorderFactory.createRaisedBevelBorder());
 		revalidate();
 		repaint();
+	}
+	
+	@Override
+	public void selectButton(boolean selected) {
+		super.selectButton(selected);
+		if (selected) {
+			setBorder(BorderFactory.createLoweredBevelBorder());
+		} else {
+			setBorder(BorderFactory.createRaisedBevelBorder());
+		}
 	}
 	
 	public DisplayableElement getElement() {
@@ -39,15 +52,13 @@ public class SpriteButton extends SelectableButton {
 
 	@Override
 	public void paintComponent(Graphics g) {
+		int height = getHeight();
+		int width = getWidth();
+
 		if (displayableElement.getImage() != null) {
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-			g2d.drawImage(displayableElement.getImage(), 0, 0, getWidth(), getHeight(), null);
-		}
-		
-		if (isSelected()) {
-			g.setColor(Color.RED);
-			g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
+			g2d.drawImage(displayableElement.getImage(),H_MARGIN_BUTTON, V_MARGIN_BUTTON, width - H_MARGIN_BUTTON, height - V_MARGIN_BUTTON, null);
 		}
 	}
 
@@ -62,16 +73,16 @@ public class SpriteButton extends SelectableButton {
 		}
 	}
 
-	// TODO: see UI
+	// TODO: see UI type
 	class ImageToolTipUI extends MetalToolTipUI {
-		private static final int V_MARGING = 5;
-		private static final int H_MARGING = 5;
+		private static final int V_MARGING_TOOLTIP = 5;
+		private static final int H_MARGING_TOOLTIP = 5;
 
 		public void paint(Graphics g, JComponent c) {
 			FontMetrics metrics = c.getFontMetrics(g.getFont());
 			g.setColor(c.getForeground());
 			g.drawString(((JToolTip) c).getTipText(), 1, metrics.getHeight());
-			g.drawImage(displayableElement.getImage(), 1, metrics.getHeight() + V_MARGING, c);
+			g.drawImage(displayableElement.getImage(), 1, metrics.getHeight() + V_MARGING_TOOLTIP, c);
 		}
 
 		public Dimension getPreferredSize(JComponent c) {
@@ -82,8 +93,8 @@ public class SpriteButton extends SelectableButton {
 			}
 
 			Image image = displayableElement.getImage();
-			int width = SwingUtilities.computeStringWidth(metrics, tipText) + H_MARGING;
-			int height = metrics.getHeight() + image.getHeight(c) + V_MARGING;
+			int width = SwingUtilities.computeStringWidth(metrics, tipText) + H_MARGING_TOOLTIP;
+			int height = metrics.getHeight() + image.getHeight(c) + V_MARGING_TOOLTIP;
 
 			if (width < image.getWidth(c)) {
 				width = image.getWidth(c);
