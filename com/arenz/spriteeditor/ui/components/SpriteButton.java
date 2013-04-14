@@ -1,5 +1,6 @@
 package com.arenz.spriteeditor.ui.components;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -7,7 +8,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JToolTip;
 import javax.swing.SwingUtilities;
@@ -39,6 +39,11 @@ public class SpriteButton extends SelectableButton {
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 			g2d.drawImage(displayableElement.getImage(), 0, 0, getWidth(), getHeight(), null);
+		}
+		
+		if (isSelected()) {
+			g.setColor(Color.RED);
+			g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 		}
 	}
 
