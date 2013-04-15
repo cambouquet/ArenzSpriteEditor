@@ -41,7 +41,19 @@ public class SpriteSelectionController extends AbstractController {
 	public class CategorySelectionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			view.selectCategory((CategoryButton) arg0.getSource(), new SpriteSelectionListener());
+			CategoryButton catButton = (CategoryButton) arg0.getSource();
+			view.selectCategory(catButton);
+			
+			displaySprites(catButton.getCategory());
+		}
+
+		private void displaySprites(SpriteCategory category) {
+			Iterator<DisplayableElement> ite = category.getElementsIterator();
+			
+			while (ite.hasNext()) {
+				DisplayableElement element = ite.next();
+				view.displaySprite(element, new SpriteSelectionListener());
+			}
 		}
 	}
 	

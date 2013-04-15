@@ -2,13 +2,10 @@ package com.arenz.spriteeditor.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
@@ -18,7 +15,6 @@ import com.arenz.spriteeditor.model.SpriteCategories;
 import com.arenz.spriteeditor.model.SpriteCategory;
 import com.arenz.spriteeditor.ui.components.ButtonSelectionPanel;
 import com.arenz.spriteeditor.ui.components.CategoryButton;
-import com.arenz.spriteeditor.ui.components.SizeHelper;
 import com.arenz.spriteeditor.ui.components.SpriteButton;
 
 public class SpriteSelectionView {
@@ -76,29 +72,22 @@ public class SpriteSelectionView {
 		spriteSelectionPanel.revalidate();
 	}
 
-	public void selectCategory(CategoryButton categoryButton, ActionListener spriteListener) {
+	public void selectCategory(CategoryButton categoryButton) {
 		this.selectedCategory = categoryButton;
 		categoriesPanel.selectButton(selectedCategory);
 		
 		SpriteCategory category = categoryButton.getCategory();
-		displayImages(category, spriteListener);
 		System.out.println("Category " + category.getName() + " selected");
 	}
-
-	private void displayImages(SpriteCategory category, ActionListener spriteListener) {
-		spritesPanel.removeAllButtons();
-		Iterator<DisplayableElement> ite = category.getElementsIterator();
-		while (ite.hasNext()) {
-			DisplayableElement sprite = ite.next();
-			SpriteButton spriteButton = new SpriteButton(sprite);
-			spriteButton.addActionListener(spriteListener);
-			spritesPanel.addButton(spriteButton);
-		}
-
+	
+	public void displaySprite(DisplayableElement sprite, ActionListener spriteListener) {
+		SpriteButton spriteButton = new SpriteButton(sprite);
+		spriteButton.addActionListener(spriteListener);
+		spritesPanel.addButton(spriteButton);
 		spritesPanel.revalidate();
 		spritesPanel.repaint();
 	}
-
+	
 	public void selectSprite(SpriteButton spriteButton) {
 		this.selectedSprite = spriteButton;
 		spritesPanel.selectButton(selectedSprite);
