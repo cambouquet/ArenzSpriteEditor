@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.Iterator;
 
 import com.arenz.spriteeditor.model.DisplayableElement;
+import com.arenz.spriteeditor.model.Sprite;
 import com.arenz.spriteeditor.model.SpriteCategories;
 import com.arenz.spriteeditor.model.SpriteCategory;
 import com.arenz.spriteeditor.ui.SpriteSelectionView;
@@ -60,7 +61,9 @@ public class SpriteSelectionController extends AbstractController {
 	public class SpriteSelectionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			view.selectSprite((SpriteButton) arg0.getSource());
+			SpriteButton spriteButton = (SpriteButton) arg0.getSource();
+			view.selectSprite(spriteButton);
+			parentController.configureNewSprite((Sprite) spriteButton.getElement());
 		}
 	}
 }

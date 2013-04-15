@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale.Category;
 
 import javax.imageio.ImageIO;
 
@@ -17,6 +16,7 @@ import com.arenz.spriteeditor.model.Sprite;
 import com.arenz.spriteeditor.model.SpriteCategories;
 import com.arenz.spriteeditor.model.SpriteCategory;
 import com.arenz.spriteeditor.ui.MainWindowView;
+import com.arenz.spriteeditor.ui.SpriteConfigurationView;
 import com.arenz.spriteeditor.ui.SpriteSelectionView;
 import com.arenz.spriteeditor.ui.Viewable;
 import com.arenz.spriteeditor.ui.menu.MenuView;
@@ -29,10 +29,12 @@ public class MainController extends AbstractController {
 
 	private SpriteSelectionController spriteSelectionController;
 
+	private SpriteConfigurationController spriteConfigurationController;
+
 	private Project project;
 
 	private static final String SOFTWARE_NAME = "Sprite Editor";
-
+	
 	public MainController() {
 		mainView = new MainWindowView(this, SOFTWARE_NAME);
 
@@ -42,6 +44,13 @@ public class MainController extends AbstractController {
 
 	private void createMainPanels() {
 		createSpriteSelectionPanel();
+		createSpriteConfigurationPanel();
+	}
+
+	private void createSpriteConfigurationPanel() {
+		SpriteConfigurationView spriteConfigurationView = new SpriteConfigurationView();
+		spriteConfigurationController = new SpriteConfigurationController(this, spriteConfigurationView);
+		mainView.setSpriteConfigurationPanel(spriteConfigurationView);
 	}
 
 	private void createSpriteSelectionPanel() {
@@ -123,5 +132,12 @@ public class MainController extends AbstractController {
 	@Override
 	public Viewable getWindow() {
 		return mainView;
+	}
+
+	public void configureNewSprite(Sprite sprite) {
+		spriteConfigurationController.configureNewSprite(sprite);
+
+		mainView.getViewWindow().revalidate();
+		mainView.getViewWindow().repaint();
 	}
 }

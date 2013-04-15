@@ -19,7 +19,6 @@ public class SpriteButton extends SelectableButton {
 	private DisplayableElement displayableElement;
 	
 	public SpriteButton(DisplayableElement dispEl) {
-		// super(dispEl.getIcon());
 		super();
 		displayableElement = dispEl;
 		setMinimumSize(SizeHelper.getSpriteButtonSize());
