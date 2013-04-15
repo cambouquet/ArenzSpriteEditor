@@ -24,7 +24,7 @@ public class MainWindowView implements Viewable {
 	public MainWindowView(MainController controller, String title) {
 		window.setTitle(title);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setMinimumSize(new Dimension(500, 500));
+		window.setMinimumSize(new Dimension(100, 100));
 		
 		window.setVisible(true);
 	}

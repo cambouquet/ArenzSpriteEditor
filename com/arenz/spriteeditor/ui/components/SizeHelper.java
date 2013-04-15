@@ -15,6 +15,5 @@ public abstract class SizeHelper {
 
 	public static Dimension getSpriteButtonMargin() {
 		return new Dimension(H_MARGIN_BUTTON, V_MARGIN_BUTTON);
-	}
-	
+	}	
 }

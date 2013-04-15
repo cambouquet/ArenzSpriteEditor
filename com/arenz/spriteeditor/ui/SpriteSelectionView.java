@@ -2,10 +2,13 @@ package com.arenz.spriteeditor.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
@@ -15,6 +18,7 @@ import com.arenz.spriteeditor.model.SpriteCategories;
 import com.arenz.spriteeditor.model.SpriteCategory;
 import com.arenz.spriteeditor.ui.components.ButtonSelectionPanel;
 import com.arenz.spriteeditor.ui.components.CategoryButton;
+import com.arenz.spriteeditor.ui.components.SizeHelper;
 import com.arenz.spriteeditor.ui.components.SpriteButton;
 
 public class SpriteSelectionView {
@@ -33,7 +37,8 @@ public class SpriteSelectionView {
 		spriteSelectionPanel.setBorder(BorderFactory.createRaisedBevelBorder());
 
 		spriteSelectionPanel.setLayout(new BorderLayout());
-
+		spritesPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		
 		categoriesScrollPane = createScrollPane("Categories", categoriesPanel);
 		spritesScrollPane = createScrollPane("Sprites", spritesPanel);
 
