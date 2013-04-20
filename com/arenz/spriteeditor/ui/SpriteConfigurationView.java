@@ -1,6 +1,7 @@
 package com.arenz.spriteeditor.ui;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
@@ -21,6 +22,8 @@ public class SpriteConfigurationView {
 		this.sprite = sprite;
 		this.spriteView = new ImagePanel(sprite.getImage());
 		mainPanel.add(spriteView);
+		mainPanel.setMinimumSize(new Dimension(Constants.WINDOW_WIDTH*3/5, Constants.WINDOW_HEIGHT*3/5));
+		mainPanel.setPreferredSize(new Dimension(Constants.WINDOW_WIDTH*3/5, Constants.WINDOW_HEIGHT*3/5));
 		
 		
 		mainPanel.revalidate();
