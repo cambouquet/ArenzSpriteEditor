@@ -71,8 +71,12 @@ public class SpriteSelectionView {
 		this.selectedCategory = categoryButton;
 		categoriesPanel.selectButton(selectedCategory);
 		
+		spritesPanel.removeAll();
 		SpriteCategory category = categoryButton.getCategory();
 		System.out.println("Category " + category.getName() + " selected");
+		
+		spriteSelectionPanel.revalidate();
+		spriteSelectionPanel.repaint();
 	}
 	
 	public void displaySprite(DisplayableElement sprite, ActionListener spriteListener) {
