@@ -39,7 +39,7 @@ public class SpriteSelectionView {
 		categoriesScrollPane = createScrollPane("Categories", categoriesPanel);
 		spritesScrollPane = createScrollPane("Sprites", spritesPanel);
 
-		verifyCategoryNumber();
+		spriteSelectionPanel.add(categoriesScrollPane, BorderLayout.NORTH);
 		spriteSelectionPanel.add(spritesScrollPane, BorderLayout.CENTER);
 	}
 
@@ -54,13 +54,6 @@ public class SpriteSelectionView {
 		return jsp;
 	}
 
-	private void verifyCategoryNumber() {
-		int nbrCategories = categories.getCategoriesCount();
-		if (nbrCategories > 1) {
-			spriteSelectionPanel.add(categoriesScrollPane, BorderLayout.NORTH);
-		}
-	}
-
 	public Component getMainComponent() {
 		return spriteSelectionPanel;
 	}
@@ -70,8 +63,8 @@ public class SpriteSelectionView {
 		catButton.addActionListener(categoryListener);
 		categoriesPanel.addButton(catButton);
 
-		verifyCategoryNumber();
 		spriteSelectionPanel.revalidate();
+		spriteSelectionPanel.repaint();
 	}
 
 	public void selectCategory(CategoryButton categoryButton) {

@@ -15,6 +15,11 @@ public class SpriteConfigurationView {
 	
 	public SpriteConfigurationView() {
 		mainPanel.add(spriteView);
+		mainPanel.setMinimumSize(new Dimension(Constants.WINDOW_WIDTH*3/5, Constants.WINDOW_HEIGHT*3/5));
+		mainPanel.setPreferredSize(new Dimension(Constants.WINDOW_WIDTH*3/5, Constants.WINDOW_HEIGHT*3/5));
+		
+		mainPanel.revalidate();
+		mainPanel.repaint();
 	}
 	
 	public void displayNewSprite(Sprite sprite) {
@@ -22,10 +27,7 @@ public class SpriteConfigurationView {
 		this.sprite = sprite;
 		this.spriteView = new ImagePanel(sprite.getImage());
 		mainPanel.add(spriteView);
-		mainPanel.setMinimumSize(new Dimension(Constants.WINDOW_WIDTH*3/5, Constants.WINDOW_HEIGHT*3/5));
-		mainPanel.setPreferredSize(new Dimension(Constants.WINDOW_WIDTH*3/5, Constants.WINDOW_HEIGHT*3/5));
-		
-		
+
 		mainPanel.revalidate();
 		mainPanel.repaint();
 	}
