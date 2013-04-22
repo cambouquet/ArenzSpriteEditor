@@ -15,8 +15,8 @@ public class SpriteConfigurationView {
 	
 	public SpriteConfigurationView() {
 		mainPanel.add(spriteView);
-		mainPanel.setMinimumSize(new Dimension(Constants.WINDOW_WIDTH*3/5, Constants.WINDOW_HEIGHT*3/5));
-		mainPanel.setPreferredSize(new Dimension(Constants.WINDOW_WIDTH*3/5, Constants.WINDOW_HEIGHT*3/5));
+		mainPanel.setMinimumSize(new Dimension(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SPRITE_PANEL_HEIGHT*3));
+		mainPanel.setPreferredSize(new Dimension(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SPRITE_PANEL_HEIGHT*3));
 		
 		mainPanel.revalidate();
 		mainPanel.repaint();

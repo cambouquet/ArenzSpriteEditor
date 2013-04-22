@@ -49,8 +49,8 @@ public class SpriteSelectionView {
 
 		jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		jsp.setMinimumSize(new Dimension(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT/5));
-		jsp.setPreferredSize(new Dimension(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT/5));
+		jsp.setMinimumSize(new Dimension(Constants.WINDOW_WIDTH, Constants.SPRITE_PANEL_HEIGHT));
+		jsp.setPreferredSize(new Dimension(Constants.WINDOW_WIDTH, Constants.SPRITE_PANEL_HEIGHT));
 		return jsp;
 	}
 
