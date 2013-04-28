@@ -21,8 +21,8 @@ public class SpriteButton extends SelectableButton {
 	public SpriteButton(DisplayableElement dispEl) {
 		super();
 		displayableElement = dispEl;
-		setMinimumSize(SizeHelper.getSpriteButtonSize());
-		setPreferredSize(SizeHelper.getSpriteButtonSize());
+		setMinimumSize(PanelConstructorHelper.getSpriteButtonSize());
+		setPreferredSize(PanelConstructorHelper.getSpriteButtonSize());
 		setOpaque(false);
 		setToolTipText(displayableElement.getName());
 		setBorder(BorderFactory.createRaisedBevelBorder());
@@ -46,8 +46,8 @@ public class SpriteButton extends SelectableButton {
 
 	@Override
 	public void paintComponent(Graphics g) {
-		int vMargin = SizeHelper.getSpriteButtonMargin().height;
-		int hMargin = SizeHelper.getSpriteButtonMargin().width;
+		int vMargin = PanelConstructorHelper.getSpriteButtonMargin().height;
+		int hMargin = PanelConstructorHelper.getSpriteButtonMargin().width;
 
 		if (displayableElement.getImage() != null) {
 			Graphics2D g2d = (Graphics2D) g;
