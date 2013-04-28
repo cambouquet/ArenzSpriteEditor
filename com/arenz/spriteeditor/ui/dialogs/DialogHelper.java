@@ -27,7 +27,7 @@ public abstract class DialogHelper {
 		FileSystemView systemView = FileSystemView.getFileSystemView();
 		// Hijack to speed tests
 		//File homeFile = systemView.getHomeDirectory();
-		File homeFile = new File("C:\\Users\\Camille\\Informatique\\projets\\Arene V2\\SpriteEditor\\Tests");
+		File homeFile = new File("C:\\Users\\Camille\\Informatique\\projets\\Arene V2\\SpriteEditor\\Tests\\Test 2");
 		
 		return new JFileChooser(homeFile);
 	}

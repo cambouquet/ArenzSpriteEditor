@@ -5,8 +5,10 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 import com.arenz.spriteeditor.model.Sprite;
 import com.arenz.spriteeditor.ui.components.ImagePanel;
@@ -17,6 +19,7 @@ public class SpriteConfigurationView {
 	private ImagePanel spriteView = new ImagePanel(null);
 	private Sprite sprite;
 	private JScrollPane spritesScrollPane;
+	private JTextField spriteNameTextField;
 	
 	public SpriteConfigurationView() {
 		mainPanel.add(spriteView);
@@ -26,15 +29,27 @@ public class SpriteConfigurationView {
 		//mainPanel.setLayout(new GridBagLayout());
 		mainPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		
-		spritesScrollPane = PanelConstructorHelper.createScrollPane("Display", spriteView, Constants.WINDOW_WIDTH/2, Constants.WINDOW_WIDTH/2);
-		
-		//mainPanel.add(spritesScrollPane, LayoutHelper.getGridBagConstraints(0, 0, 1, 1));
-		mainPanel.add(spritesScrollPane);
+		addPanels();
 		
 		mainPanel.revalidate();
 		mainPanel.repaint();
 	}
 	
+	private void addPanels() {
+		spritesScrollPane = PanelConstructorHelper.createScrollPane("Display", spriteView, Constants.WINDOW_WIDTH/2, Constants.WINDOW_WIDTH/2);
+		
+		//mainPanel.add(spritesScrollPane, LayoutHelper.getGridBagConstraints(0, 0, 1, 1));
+		mainPanel.add(spritesScrollPane);
+
+		// description panel
+		JPanel descriptionPanel = new JPanel();
+		descriptionPanel.setLayout(new GridBagLayout());
+		spriteNameTextField = new JTextField(15);
+		descriptionPanel.add(new JLabel("Name"), LayoutHelper.getGridBagConstraints(0, 0, 1, 1));
+		descriptionPanel.add(spriteNameTextField, LayoutHelper.getGridBagConstraints(1, 0, 1, 1));
+		mainPanel.add(descriptionPanel);
+	}
+
 	public void displayNewSprite(Sprite sprite) {
 		//spritesScrollPane.remove(spriteView);
 		this.sprite = sprite;
@@ -44,6 +59,11 @@ public class SpriteConfigurationView {
 		spritesScrollPane.setViewportView(spriteView);
 		spritesScrollPane.revalidate();
 		spritesScrollPane.repaint();
+		
+		spriteNameTextField.setText(sprite.getName());
+		//spriteNameTextField.revalidate();
+		//spriteNameTextField.repaint();
+		
 		mainPanel.revalidate();
 		mainPanel.repaint();
 	}
