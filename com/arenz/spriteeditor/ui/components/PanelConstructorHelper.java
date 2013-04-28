@@ -24,13 +24,13 @@ public abstract class PanelConstructorHelper {
 		return new Dimension(H_MARGIN_BUTTON, V_MARGIN_BUTTON);
 	}	
 	
-	public static JScrollPane createScrollPane(String titre, JPanel contenu) {
-		return createScrollPane(titre, contenu, Constants.SPRITE_PANEL_HEIGHT, Constants.WINDOW_WIDTH);
+	public static JScrollPane createScrollPane(String title, JPanel content) {
+		return createScrollPane(title, content, Constants.SPRITE_PANEL_HEIGHT, Constants.WINDOW_WIDTH);
 	}
 
-	public static JScrollPane createScrollPane(String titre, JPanel contenu, int height, int width) {
-		JScrollPane jsp = new JScrollPane(contenu);
-		jsp.setBorder(new TitledBorder(BorderFactory.createLoweredBevelBorder(), titre));
+	public static JScrollPane createScrollPane(String title, JPanel content, int height, int width) {
+		JScrollPane jsp = new JScrollPane(content);
+		jsp.setBorder(new TitledBorder(BorderFactory.createLoweredBevelBorder(), title));
 		
 		jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
