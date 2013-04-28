@@ -2,6 +2,8 @@ package com.arenz.spriteeditor.ui;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -21,7 +23,12 @@ public class SpriteConfigurationView {
 		mainPanel.setMinimumSize(new Dimension(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SPRITE_PANEL_HEIGHT*3));
 		mainPanel.setPreferredSize(new Dimension(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SPRITE_PANEL_HEIGHT*3));
 		
-		spritesScrollPane = PanelConstructorHelper.createScrollPane("Display", spriteView, Constants.SPRITE_PANEL_HEIGHT*3, Constants.WINDOW_WIDTH/3);
+		//mainPanel.setLayout(new GridBagLayout());
+		mainPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		
+		spritesScrollPane = PanelConstructorHelper.createScrollPane("Display", spriteView, Constants.WINDOW_WIDTH/2, Constants.WINDOW_WIDTH/2);
+		
+		//mainPanel.add(spritesScrollPane, LayoutHelper.getGridBagConstraints(0, 0, 1, 1));
 		mainPanel.add(spritesScrollPane);
 		
 		mainPanel.revalidate();
