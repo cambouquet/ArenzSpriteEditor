@@ -2,9 +2,11 @@ package com.arenz.spriteeditor.ui;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,14 +22,15 @@ public class SpriteConfigurationView {
 	private Sprite sprite;
 	private JScrollPane spritesScrollPane;
 	private JTextField spriteNameTextField;
+	private JButton saveButton = new JButton("Save");
 	
 	public SpriteConfigurationView() {
 		mainPanel.add(spriteView);
 		mainPanel.setMinimumSize(new Dimension(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SPRITE_PANEL_HEIGHT*3));
 		mainPanel.setPreferredSize(new Dimension(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SPRITE_PANEL_HEIGHT*3));
 		
-		//mainPanel.setLayout(new GridBagLayout());
-		mainPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		mainPanel.setLayout(new GridBagLayout());
+		//mainPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		
 		addPanels();
 		
@@ -38,8 +41,7 @@ public class SpriteConfigurationView {
 	private void addPanels() {
 		spritesScrollPane = PanelConstructorHelper.createScrollPane("Display", spriteView, Constants.WINDOW_WIDTH/2, Constants.WINDOW_WIDTH/2);
 		
-		//mainPanel.add(spritesScrollPane, LayoutHelper.getGridBagConstraints(0, 0, 1, 1));
-		mainPanel.add(spritesScrollPane);
+		mainPanel.add(spritesScrollPane, LayoutHelper.getGridBagConstraints(0, 0, 1, 1));
 
 		// description panel
 		JPanel descriptionPanel = new JPanel();
@@ -47,7 +49,10 @@ public class SpriteConfigurationView {
 		spriteNameTextField = new JTextField(15);
 		descriptionPanel.add(new JLabel("Name"), LayoutHelper.getGridBagConstraints(0, 0, 1, 1));
 		descriptionPanel.add(spriteNameTextField, LayoutHelper.getGridBagConstraints(1, 0, 1, 1));
-		mainPanel.add(descriptionPanel);
+		mainPanel.add(descriptionPanel, LayoutHelper.getGridBagConstraints(0, 1, 1, 1));
+		
+		// save button
+		mainPanel.add(saveButton, LayoutHelper.getGridBagConstraints(0, 2, GridBagConstraints.REMAINDER, GridBagConstraints.REMAINDER));
 	}
 
 	public void displayNewSprite(Sprite sprite) {
@@ -70,5 +75,9 @@ public class SpriteConfigurationView {
 
 	public Component getMainComponent() {
 		return mainPanel;
+	}
+
+	public void addSaveButtonListener(ActionListener listener) {
+		saveButton.addActionListener(listener);
 	}
 }
